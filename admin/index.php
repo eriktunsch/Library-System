@@ -2,9 +2,7 @@
 
 include('../php/server.php');
 
-use de\eriktunsch\basket\user\User;
-use LdapRecord\Container;
-use LdapRecord\Connection;
+use de\eriktunsch\library\user\User;
 
 if (!$Login->isLoggedin()) {
     $actual_link = "https://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}";
@@ -12,25 +10,6 @@ if (!$Login->isLoggedin()) {
     die;
 }
 include('../php/html/menu.php');
-
-$connection = new Connection([
-    'hosts' => ['192.168.1.112'],
-    'port' => 389,
-    'base_dn' => 'dc=humboldt-makerspace,dc=de',
-    'username' => 'cn=server-login,ou=users,dc=humboldt-makerspace,dc=de',
-    'password' => 'boswteq6kt#THF7YoDoLK9@4**vvd$L',
-]);
-
-// Add the connection into the container:
-Container::addConnection($connection);
-
-$query = $connection->query();
-$query->where('objectClass', '=', "user");
-$query->select(['sn', 'givenName', 'uid', 'cn', 'uidNumber']);
-$query->limit(0);
-$query->in("ou=users,dc=humboldt-makerspace,dc=de");
-
-$users = $query->get();
 
 ?>
 <title><?php echo $Settings->getSettings("html_title"); ?> - Admin</title>

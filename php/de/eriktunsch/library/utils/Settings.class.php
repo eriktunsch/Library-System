@@ -1,8 +1,8 @@
 <?php
 
-namespace de\eriktunsch\basket\utils;
+namespace de\eriktunsch\library\utils;
 
-use \de\eriktunsch\basket\utils\Variable;
+use \de\eriktunsch\library\utils\Variable;
 use mysqli;
 
 class Settings

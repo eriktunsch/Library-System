@@ -1,6 +1,6 @@
 <?php
 
-namespace de\eriktunsch\basket\utils\html;
+namespace de\eriktunsch\library\utils\html;
 
 class InformationContainer
 {

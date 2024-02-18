@@ -1,6 +1,6 @@
 <?php
 
-namespace de\eriktunsch\basket\utils;
+namespace de\eriktunsch\library\utils;
 
 use GeoIp2\Database\Reader;
 

@@ -1,9 +1,9 @@
 <?php
 
-namespace de\eriktunsch\basket\utils;
+namespace de\eriktunsch\library\utils;
 
-use \de\eriktunsch\basket\utils\StringUtils;
-use \de\eriktunsch\basket\utils\Settings;
+use \de\eriktunsch\library\utils\StringUtils;
+use \de\eriktunsch\library\utils\Settings;
 
 class LoadResource
 {

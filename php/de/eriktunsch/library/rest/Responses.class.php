@@ -1,6 +1,6 @@
 <?php
 
-namespace de\eriktunsch\basket\rest;
+namespace de\eriktunsch\library\rest;
 
 class Responses
 {

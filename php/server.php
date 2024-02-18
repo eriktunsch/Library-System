@@ -1,7 +1,7 @@
 <?php
 require 'defines.php';
 require 'composer/vendor/autoload.php';
-require 'de/eriktunsch/basket/autoloader.class.php';
+require 'de/eriktunsch/library/autoloader.class.php';
 //ini_set('display_errors', 1);
 //ini_set('display_startup_errors', 1);
 //error_reporting(E_ALL);
@@ -11,20 +11,20 @@ session_start();
     'de' => __DIR__ . DIRECTORY_SEPARATOR . 'de'
 ])->register();
 
-$Settings = new \de\eriktunsch\basket\utils\Settings();
-$Headline = new \de\eriktunsch\basket\utils\html\Headline();
-$Modal = new \de\eriktunsch\basket\utils\html\Modal();
-$MessageContainer = new \de\eriktunsch\basket\utils\html\MessageContainer();
-$LoadResource = new \de\eriktunsch\basket\utils\LoadResource();
-$Table = new \de\eriktunsch\basket\utils\html\Table();
-$ArraySearch = new \de\eriktunsch\basket\utils\ArraySearch();
-$StringUtils = new \de\eriktunsch\basket\utils\StringUtils();
-$Cookies = new \de\eriktunsch\basket\utils\Cookies();
-$Client = new \de\eriktunsch\basket\utils\Client();
-$Variable = new \de\eriktunsch\basket\utils\Variable();
-$User = new \de\eriktunsch\basket\user\User();
-$Login = new \de\eriktunsch\basket\user\Login();
-$Geo = new \de\eriktunsch\basket\utils\Geo();
+$Settings = new \de\eriktunsch\library\utils\Settings();
+$Headline = new \de\eriktunsch\library\utils\html\Headline();
+$Modal = new \de\eriktunsch\library\utils\html\Modal();
+$MessageContainer = new \de\eriktunsch\library\utils\html\MessageContainer();
+$LoadResource = new \de\eriktunsch\library\utils\LoadResource();
+$Table = new \de\eriktunsch\library\utils\html\Table();
+$ArraySearch = new \de\eriktunsch\library\utils\ArraySearch();
+$StringUtils = new \de\eriktunsch\library\utils\StringUtils();
+$Cookies = new \de\eriktunsch\library\utils\Cookies();
+$Client = new \de\eriktunsch\library\utils\Client();
+$Variable = new \de\eriktunsch\library\utils\Variable();
+$User = new \de\eriktunsch\library\user\User();
+$Login = new \de\eriktunsch\library\user\Login();
+$Geo = new \de\eriktunsch\library\utils\Geo();
 
 if ($Settings->getSettings("maintenance") == "true") {
     if (!in_array($Client->getIP(), json_decode($Settings->getSettings("maintenance_ignore")))) {

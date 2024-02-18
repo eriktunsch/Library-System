@@ -1,8 +1,8 @@
 <?php
 
-namespace de\eriktunsch\basket\utils\html;
+namespace de\eriktunsch\library\utils\html;
 
-use \de\eriktunsch\basket\utils\Settings;
+use \de\eriktunsch\library\utils\Settings;
 
 class Modal
 {

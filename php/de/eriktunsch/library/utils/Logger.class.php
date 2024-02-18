@@ -1,9 +1,9 @@
 <?php
 
-namespace de\eriktunsch\basket\utils;
+namespace de\eriktunsch\library\utils;
 
 use mysqli;
-use de\eriktunsch\basket\utils\Variable;
+use de\eriktunsch\library\utils\Variable;
 
 class Logger
 {

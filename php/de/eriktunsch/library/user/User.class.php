@@ -1,9 +1,9 @@
 <?php
 
-namespace de\eriktunsch\basket\user;
+namespace de\eriktunsch\library\user;
 
-use \de\eriktunsch\basket\user\Login;
-use de\eriktunsch\basket\utils\Variable;
+use \de\eriktunsch\library\user\Login;
+use de\eriktunsch\library\utils\Variable;
 use LdapRecord\Container;
 use LdapRecord\Connection;
 use LdapRecord\Models\Entry;
@@ -47,7 +47,7 @@ class User
             $query->select(['sn', 'givenName', 'cn']);
             $query->limit(0);
             $query->in("ou=users,dc=humboldt-makerspace,dc=de");
-            $query->whereMemberOf('cn=basket-admin,ou=groups,dc=humboldt-makerspace,dc=de');
+            $query->whereMemberOf('cn=library-admin,ou=groups,dc=humboldt-makerspace,dc=de');
 
             $first = $query->first();
 

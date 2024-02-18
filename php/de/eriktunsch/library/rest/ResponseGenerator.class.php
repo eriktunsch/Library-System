@@ -1,8 +1,8 @@
 <?php
 
-namespace de\eriktunsch\basket\rest;
+namespace de\eriktunsch\library\rest;
 
-use \de\eriktunsch\basket\utils\ServerUsage;
+use \de\eriktunsch\library\utils\ServerUsage;
 
 class ResponseGenerator
 {

@@ -1,7 +1,7 @@
 <?php
 require '../server.php';
 
-use de\eriktunsch\basket\user\User;
+use de\eriktunsch\library\user\User;
 
 if (!$Login->isLoggedin()) {
     $actual_link = "https://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}";

@@ -1,6 +1,6 @@
 <?php
 
-namespace de\eriktunsch\basket\user;
+namespace de\eriktunsch\library\user;
 
 class Login
 {

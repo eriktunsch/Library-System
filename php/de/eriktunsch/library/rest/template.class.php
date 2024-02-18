@@ -1,9 +1,9 @@
 <?php
-namespace de\eriktunsch\basket\rest\queries;
+namespace de\eriktunsch\library\rest\queries;
 
-use \de\eriktunsch\basket\rest\Responses;
-use \de\eriktunsch\basket\rest\ResponseGenerator;
-use \de\eriktunsch\basket\utils\Variable;
+use \de\eriktunsch\library\rest\Responses;
+use \de\eriktunsch\library\rest\ResponseGenerator;
+use \de\eriktunsch\library\utils\Variable;
 use mysqli;
 
 class template
