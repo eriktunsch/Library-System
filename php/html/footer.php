@@ -4,7 +4,7 @@
       <div class="row">
         <div class="col-sm-12 col-md-6">
           <h6>About</h6>
-          <p class="text-justify">Humboldt-Makerspace library (Stellar Occultation Data Input System) is the data collection programme of IOTA/ES for observations of stellar occultations by asteroids, comets, planets and their moons in our solar system. Technical support of Humboldt-Makerspace library is maintained by Erik Trunsch for IOTA/ES.</p>
+          <p class="text-justify">Humboldt-Makerspace Basket (Stellar Occultation Data Input System) is the data collection programme of IOTA/ES for observations of stellar occultations by asteroids, comets, planets and their moons in our solar system. Technical support of Humboldt-Makerspace Basket is maintained by Erik Trunsch for IOTA/ES.</p>
         </div>
 
         <div class="col-xs-6 col-md-3">

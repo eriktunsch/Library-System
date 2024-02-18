@@ -1,6 +1,6 @@
 <?php
 
-use \de\eriktunsch\library\user\User;
+use \de\eriktunsch\basket\user\User;
 use LdapRecord\Container;
 use LdapRecord\Connection;
 use LdapRecord\Models\Entry;
@@ -16,8 +16,8 @@ include('../php/server.php');
 
     <meta name="robots" content="index" />
     <meta name="audience" content="Alle" />
-    <meta name="page-type" content="Humboldt-Makerspace library" />
-    <meta name="page-topic" content="Humboldt-Makerspace library" />
+    <meta name="page-type" content="Humboldt-Makerspace Basket" />
+    <meta name="page-topic" content="Humboldt-Makerspace Basket" />
     <meta name="revisit-after" content="2 days">
     <meta name="copyright" content="Erik Tunsch">
     <meta name="author" content="Erik Tunsch">
@@ -65,7 +65,7 @@ include('../php/server.php');
     <?php echo $LoadResource->insertCSS("external/sweetalert.css"); ?>
 
 
-    <title>Humboldt-Makerspace library - Kiosk 1</title>
+    <title>Humboldt-Makerspace Basket - Kiosk 1</title>
 </head>
 
 <body style="width: 100%;background: #fff; background-size: cover;" id="top">

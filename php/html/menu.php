@@ -6,8 +6,8 @@
 
   <meta name="robots" content="index" />
   <meta name="audience" content="Alle" />
-  <meta name="page-type" content="Humboldt-Makerspace library" />
-  <meta name="page-topic" content="Humboldt-Makerspace library" />
+  <meta name="page-type" content="Humboldt-Makerspace Basket" />
+  <meta name="page-topic" content="Humboldt-Makerspace Basket" />
   <meta name="revisit-after" content="2 days">
   <meta name="copyright" content="Erik Tunsch">
   <meta name="author" content="Erik Tunsch">

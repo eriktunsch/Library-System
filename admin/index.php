@@ -2,7 +2,7 @@
 
 include('../php/server.php');
 
-use de\eriktunsch\library\user\User;
+use de\eriktunsch\basket\user\User;
 use LdapRecord\Container;
 use LdapRecord\Connection;
 
