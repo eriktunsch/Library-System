@@ -7,5 +7,5 @@ $Cookies->unset_cookie("identifier");
 
 session_destroy();
 
-header('Location: https://auth.humboldt-makerspace.de/application/o/library/end-session/');
+header('Location: https://auth.humboldt-makerspace.de/application/o/bib/end-session/');
 

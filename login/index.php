@@ -3,9 +3,9 @@
 include('../php/server.php');
 
 $provider = new \League\OAuth2\Client\Provider\GenericProvider([
-  'clientId'                => 'aCKEmzcFc9aMSNxmbqpNDjk4jUiDzoh5MOsOmjqF',    // The client ID assigned to you by the provider
-  'clientSecret'            => 'pSwrptadS2l641s5CW25JPVYQ1jy83TxCht8LKHmjYhqMAgbiz3niRQwaoFAbcYCoWh8OpwKPt50FoCQi8PNiKjXrK9HJMh1tBxTunVhdBYdPw7PiSCgFlXrnnmuORwZ',    // The client password assigned to you by the provider
-  'redirectUri'             => 'https://library.humboldt-makerspace.de/login',
+  'clientId'                => 'ir1RcIc82GTeeMiObsbDIs1H8BfmTAmnp5t4AV5V',    // The client ID assigned to you by the provider
+  'clientSecret'            => '9W2qJkapD9uhpUiqnWaLxVV24KBu9G3HybBXtTa1LM82Vc9KHGOsu1F8WuvbgAkeurRK4YZWjsPCbGLboiagxYV2lUh9geZ4d7rNS8dCDwiFrdDJzKJOC67fMXPnJWt8',    // The client password assigned to you by the provider
+  'redirectUri'             => 'https://' . $Settings->getSettings("url") . '/login',
   'urlAuthorize'            => 'https://auth.humboldt-makerspace.de/application/o/authorize/',
   'urlAccessToken'          => 'https://auth.humboldt-makerspace.de/application/o/token/',
   'urlResourceOwnerDetails' => 'https://auth.humboldt-makerspace.de/application/o/userinfo/'
@@ -58,7 +58,7 @@ if (!isset($_GET['code'])) {
 
     $_SESSION["username"] = $resourceOwner->toArray()["preferred_username"];
 
-    header("Location: https://library.humboldt-makerspace.de");
+    header("Location: https://" . $Settings->getSettings("url"));
     die();
   } catch (\League\OAuth2\Client\Provider\Exception\IdentityProviderException $e) {
 
