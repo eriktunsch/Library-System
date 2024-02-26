@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <?php echo $LoadResource->insertJS("external/jquery.js", true); ?>
-    <?php //echo $LoadResource->insertJS("core/libs.js", true); ?>
+    <?php echo $LoadResource->insertJS("core/libs.js", true); ?>
     <?php echo $LoadResource->insertJS("core/external.js", true); ?>
     <?php echo $LoadResource->insertJS("external/flatpickr.js", true); ?>
     <?php echo $LoadResource->insertJS("external/aos.js", true); ?>
