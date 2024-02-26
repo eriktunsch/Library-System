@@ -42,6 +42,10 @@ class newBook
                 && isset($_data["genres"]) && $_data["genres"] != ""
                 && isset($_data["images"]) && $_data["images"] != ""
             ) {
+                $test = $this->db->prepare("SELECT isbn FROM books WHERE isbn=?");
+                $test->bind_param("s", $_data["isbn"]);
+                $test->execute();
+                if ($test->get_result()->num_rows == 0) {
                 $authors = json_encode(explode(",", str_replace(";", ",", $_data["authors"])));
                 $genres = json_encode(explode(",", str_replace(";", ",", $_data["genres"])));
                 $stmt = $this->db->prepare("INSERT INTO books (isbn, title, authors, publish_date, page_number, publisher, description, subtitle, genres) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
@@ -58,6 +62,10 @@ class newBook
 
                 $this->generateExecutionTime();
                 return $this->ResponseGenerator->GenerateResponse($this->Responses->ownResponse("success", "Das Buch wurde hinzugefügt!"), array(), $this->execution_time);
+            } else {
+                $this->generateExecutionTime();
+                return $this->ResponseGenerator->GenerateResponse($this->Responses->ownResponse("error", "Das Buch existiert bereits!"), array(), $this->execution_time);
+            }
             } else {
                 $this->generateExecutionTime();
                 return $this->ResponseGenerator->GenerateResponse($this->Responses->notAllParameters(), array(), $this->execution_time);
