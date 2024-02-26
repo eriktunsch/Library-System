@@ -92,11 +92,10 @@ document.addEventListener('keypress', e => {
     }
 });
 
-function selectBook(isbn, title, subtitle, publisher, description, pages, publish_date, thumbnail) {
+function selectBook(isbn, title, subtitle, description, pages, publish_date, thumbnail) {
     document.getElementById("isbn").value = isbn;
     document.getElementById("title").value = b64DecodeUnicode(title);
     document.getElementById("subtitle").value = b64DecodeUnicode(subtitle);
-    document.getElementById("publisher").value = b64DecodeUnicode(publisher);
     $('#description').val(b64DecodeUnicode(description));
     document.getElementById("pages").value = pages;
     document.getElementById("publish").value = new Date(b64DecodeUnicode(publish_date)).toLocaleDateString("de-DE");

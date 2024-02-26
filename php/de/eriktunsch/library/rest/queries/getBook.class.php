@@ -64,7 +64,6 @@ class getBook
                             "title" => $json["items"][$i]["volumeInfo"]["title"],
                             "subtitle" => $json["items"][$i]["volumeInfo"]["subtitle"],
                             "publish_date" => $json["items"][$i]["volumeInfo"]["publishedDate"],
-                            "publishers" => $json["items"][$i]["volumeInfo"]["publisher"],
                             "description" => $json["items"][$i]["volumeInfo"]["description"],
                             "pages" => $json["items"][$i]["volumeInfo"]["pageCount"],
                             "thumbnail" => $dataUri
@@ -77,8 +76,7 @@ class getBook
                             <h5 class="card-title">' . $json["items"][$i]["volumeInfo"]["title"] . ' (' . $json["items"][$i]["volumeInfo"]["publishedDate"] . ')</h5>
                             <button type="button" class="btn btn-soft-primary mt-2 w-100" data-bs-dismiss="modal" type="button" onclick="selectBook(\'' . $_data["isbn"] . '\', 
                             \'' . base64_encode($json["items"][$i]["volumeInfo"]["title"]) . '\',
-                            \'' . base64_encode($json["items"][$i]["volumeInfo"]["subtitle"]) . '\', 
-                            \'' . base64_encode($json["items"][$i]["volumeInfo"]["publisher"]) . '\', 
+                            \'' . base64_encode($json["items"][$i]["volumeInfo"]["subtitle"]) . '\',  
                             \'' . base64_encode($json["items"][$i]["volumeInfo"]["description"]) . '\', 
                             \'' . $json["items"][$i]["volumeInfo"]["pageCount"] . '\', 
                             \'' . base64_encode($json["items"][$i]["volumeInfo"]["publishedDate"]) . '\',  
