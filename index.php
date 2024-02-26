@@ -7,7 +7,12 @@ if (!$Login->isLoggedin()) {
   die;
 }
 include('php/html/menu.php'); ?>
-                                <li class="swiper-slide card card-slide" data-aos="fade-up" data-aos-delay="700">
+<div class="row">
+    <div class="col-md-12 col-lg-12">
+        <div class="row row-cols-1">
+            <div class="overflow-hidden d-slider1 ">
+                <ul class="p-0 m-0 mb-2 swiper-wrapper list-inline">
+                    <li class="swiper-slide card card-slide" data-aos="fade-up" data-aos-delay="700">
                         <div class="card-body">
                             <div class="progress-widget">
                                 <div id="circle-progress-01" class="text-center circle-progress-01 circle-progress circle-progress-primary" data-min-value="0" data-max-value="100" data-value="90" data-type="percent">
@@ -16,12 +21,18 @@ include('php/html/menu.php'); ?>
                            </svg>
                                 </div>
                                 <div class="progress-detail">
-                                    <p class="mb-2">Anzahl Bücher</p>
-                                    <h4 class="counter">x</h4>
+                                    <p class="mb-2">Anazhl Bücher</p>
+                                    <h4 class="counter">50</h4>
                                 </div>
                             </div>
                         </div>
                     </li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
   <?php
   echo $LoadResource->insertJS("intern/home.js");
 
