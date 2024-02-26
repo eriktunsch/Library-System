@@ -198,6 +198,8 @@ function addBook() {
             tagElements["genres_i"].resetTags();
             tagElements["authors_i"].resetTags();
             pond.removeFiles();
+
+            books_table.ajax.reload();
         }
     });
 }
