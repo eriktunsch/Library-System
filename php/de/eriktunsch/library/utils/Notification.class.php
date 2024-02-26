@@ -12,7 +12,7 @@ class Notification
     {
 
         $Variable = new Variable();
-        $db = new mysqli($Variable->getGlobalVar("dbhost"), $Variable->getGlobalVar("dbuser"), $Variable->getGlobalVar("dbpass"), $Variable->getGlobalVar("dbdb"));
+        $db = (new MysqlConnector())->getConnection($Variable->getGlobalVar("dbhost"), $Variable->getGlobalVar("dbuser"), $Variable->getGlobalVar("dbpass"), $Variable->getGlobalVar("dbdb"));    
         $Settings = new Settings();
 
         $body = str_replace("{{message}}", $message, str_replace("{{title}}", $title, file_get_contents('https://' . $Settings->getSettings('url') . '/php/html/email.html')));

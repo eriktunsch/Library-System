@@ -1,416 +1,204 @@
-var port;
+var publishDate;
+var pond;
+let reading = false;
+let code = ""
+let scan = false;
 
-var textEncoder;
-var textDecoder;
-var writableStreamClosed;
-var readableStreamClosed;
-var reader;
-
-var writer;
-
-var user_table = $("#table-user").DataTable({
-    language: {
-        url: "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/English.json",
-    },
-    scrollX: true,
-});
-
-var items_table = $("#table-items").DataTable({
-    processing: true,
-    serverSide: true,
-    ajax: "/php/data/items.php",
-    language: {
-        url: "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/English.json",
-    },
-    scrollX: true,
-});
-
-var historyAll_table = $("#table-historyAll").DataTable({
-    processing: true,
-    serverSide: true,
-    ajax: "/php/data/historyAll.php",
-    language: {
-        url: "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/English.json",
-    },
-    scrollX: true,
-});
-
-function deleteItem(id) {
-    Swal.fire({
-        title: "Bist du sicher?",
-        text: "Diese Aktion kann nicht rückgängig gemacht werden!",
-        type: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Yes!",
-        cancelButtonText: "No!",
-    }).then((result) => {
-        if (result.value) {
-            RestRequest(
-                "deleteItem", {
-                    id: id,
-                },
-                function(data) {
-                    items_table.ajax.reload();
-                    items_table.columns.adjust().draw();
-                }
-            );
-        }
+window.onload = function(event) {
+    initTags();
+    publishDate = $("#publish").flatpickr({
+        enableTime: false,
+        dateFormat: "d.m.Y",
+        "locale": "de"
     });
 }
 
-function newItem() {
-    var check = 0;
-    if (document.getElementById("name").value == "") {
-        iziToast.error({
-            title: "Error!",
-            message: "Please fillout the input: Name",
-        });
-        check = 1;
-    }
-    if (document.getElementById("price").value == "") {
-        iziToast.error({
-            title: "Error!",
-            message: "Please fillout the input: Price",
-        });
-        check = 1;
-    }
-    if (document.getElementById("ean").value == "") {
-        iziToast.error({
-            title: "Error!",
-            message: "Please fillout the input: EAN",
-        });
-        check = 1;
-    }
-    if (document.getElementById("picture").value == "") {
-        iziToast.error({
-            title: "Error!",
-            message: "Please fillout the input: Picture",
-        });
-        check = 1;
-    }
-    if (check == 1) {
-        iziToast.warning({
-            title: "Attention!",
-            message: "The request has been stopped!",
-        });
-        return;
-    }
+FilePond.registerPlugin(
 
-    const acceptedImageTypes = ["image/gif", "image/jpeg", "image/png"];
-    const file = document.getElementById("picture").files[0];
-    var promise = getBase64(file);
-    promise.then(function(result) {
-        console.log(result);
-    });
-    if (acceptedImageTypes.includes(file["type"])) {
-        promise.then((avatar) => {
-            RestRequest(
-                "newItem", {
-                    name: document.getElementById("name").value,
-                    price: document.getElementById("price").value,
-                    ean: document.getElementById("ean").value,
-                    picture: avatar,
-                },
-                function(data) {
-                    document.getElementById("new_item").reset();
-                    items_table.ajax.reload();
-                    items_table.columns.adjust().draw();
-                }
-            );
-        });
-    } else {
-        iziToast.error({
-            title: "Error!",
-            message: "Please only upload an image!",
-        });
-    }
-}
+    FilePondPluginFileEncode,
+    FilePondPluginFileValidateType,
+    FilePondPluginImagePreview,
+    FilePondPluginGetFile
+);
 
-function changeItem(id) {
-    var check = 0;
-    if (document.getElementById("name_change").value == "") {
-        iziToast.error({
-            title: "Error!",
-            message: "Please fillout the input: Name",
-        });
-        check = 1;
-    }
-    if (document.getElementById("price_change").value == "") {
-        iziToast.error({
-            title: "Error!",
-            message: "Please fillout the input: Price",
-        });
-        check = 1;
-    }
-    if (document.getElementById("ean_change").value == "") {
-        iziToast.error({
-            title: "Error!",
-            message: "Please fillout the input: EAN",
-        });
-        check = 1;
-    }
-    if (check == 1) {
-        iziToast.warning({
-            title: "Attention!",
-            message: "The request has been stopped!",
-        });
-        return;
-    }
+// Select the file input and use create() to turn it into a pond
+pond = FilePond.create(document.getElementById('thumbnail'), {
+    acceptedFileTypes: ['image/*'],
+    imagePreviewHeight: 256,
+    fileValidateTypeDetectType: (source, type) => new Promise((resolve, reject) => {
 
-    if (document.getElementById("picture_change").value != "") {
-        const acceptedImageTypes = ["image/gif", "image/jpeg", "image/png"];
-        const file = document.getElementById("picture_change").files[0];
-        var promise = getBase64(file);
-        promise.then(function(result) {
-            console.log(result);
-        });
-        if (acceptedImageTypes.includes(file["type"])) {
-            promise.then((avatar) => {
-                RestRequest(
-                    "changeItem", {
-                        name: document.getElementById("name_change").value,
-                        price: document.getElementById("price_change").value,
-                        ean: document.getElementById("ean_change").value,
-                        picture: avatar,
-                        id: id,
-                    },
-                    function(data) {
-                        items_table.ajax.reload();
-                        $("#changer").modal("hide");
-                    }
-                );
-            });
-        } else {
-            iziToast.error({
-                title: "Error!",
-                message: "Please only upload an image!",
-            });
-        }
-    } else {
-        RestRequest(
-            "changeItem", {
-                name: document.getElementById("name_change").value,
-                price: document.getElementById("price_change").value,
-                ean: document.getElementById("ean_change").value,
-                id: id,
-            },
-            function(data) {
-                items_table.ajax.reload();
-                items_table.columns.adjust().draw();
-                $("#changer").modal("hide");
-            }
-        );
-    }
-}
+        // Do custom type detection here and return with promise
 
-function loadChanger(id) {
-    RestRequest(
-        "loadChanger", {
-            id: id,
-        },
-        function(response) {
-            document.getElementById("changer_content").innerHTML = response.data.html;
-        }
-    );
-}
-
-function loadBalancer(id) {
-    RestRequest(
-        "loadBalancer", {
-            id: id,
-        },
-        function(response) {
-            document.getElementById("balancer_content").innerHTML =
-                response.data.html;
-        }
-    );
-}
-
-function giveMoney(id) {
-    var check = 0;
-    if (document.getElementById("money_change").value == "") {
-        iziToast.error({
-            title: "Error!",
-            message: "Please fillout the input: Sum",
-        });
-        check = 1;
-    }
-
-    if (check == 1) {
-        iziToast.warning({
-            title: "Attention!",
-            message: "The request has been stopped!",
-        });
-        return;
-    }
-
-    RestRequest(
-        "giveMoney", {
-            sum: document.getElementById("money_change").value,
-            id: id,
-        },
-        function(data) {
-            document.getElementById("balance_" + id).innerHTML =
-                parseInt(
-                    document
-                    .getElementById("balance_" + id)
-                    .innerHTML.replace(" Euro", "")
-                ) +
-                parseInt(document.getElementById("money_change").value) +
-                " Euro";
-
-            $("#balancer").modal("hide");
-        }
-    );
-}
-
-function takeMoney(id) {
-    var check = 0;
-    if (document.getElementById("money_change").value == "") {
-        iziToast.error({
-            title: "Error!",
-            message: "Please fillout the input: Sum",
-        });
-        check = 1;
-    }
-
-    if (check == 1) {
-        iziToast.warning({
-            title: "Attention!",
-            message: "The request has been stopped!",
-        });
-        return;
-    }
-
-    RestRequest(
-        "takeMoney", {
-            sum: document.getElementById("money_change").value,
-            id: id,
-        },
-        function(data) {
-            document.getElementById("balance_" + id).innerHTML =
-                parseInt(
-                    document
-                    .getElementById("balance_" + id)
-                    .innerHTML.replace(" Euro", "")
-                ) -
-                parseInt(document.getElementById("money_change").value) +
-                " Euro";
-            $("#balancer").modal("hide");
-        }
-    );
-}
-
-const button = document.getElementById("connect");
-button.addEventListener("click", async function() {
-    const ports = await navigator.serial.getPorts();
-
-    if (ports.length == 0) {
-        port = await navigator.serial.requestPort();
-    } else {
-        port = ports[0];
-    }
-
-    await port.open({ baudRate: 9600 });
-    document.getElementById("connect").style.display = "none";
-
-    textEncoder = new TextEncoderStream();
-    textDecoder = new TextDecoderStream();
-    writableStreamClosed = textEncoder.readable.pipeTo(port.writable);
-
-    writer = textEncoder.writable.getWriter();
-
-    readableStreamClosed = port.readable.pipeTo(textDecoder.writable);
-    reader = textDecoder.readable.getReader();
+        resolve(type);
+    })
 });
 
-$(".writeNFC").on("click", async(event) => {
-    const clickedElement = $(event.target);
+var books_table = $('#books-table').DataTable({
+    processing: true,
+    serverSide: false,
+    ajax: '/php/data/books.php',
+    "language": {
+        "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/German.json"
+    },
+    scrollX: true,
+    dom: 'Pfrtip',
+    columnDefs: [{
+        searchPanes: {
+            show: true
+        },
+        targets: [2, 3, 4, 5]
+    }],
 
-    var user = clickedElement.data("id");
-
-    if (port.writable) {
-        await writer.write("w");
-        Swal.fire({
-            title: "Bitte Tag an den Scanner halten",
-            text: "Danach OK drücken!",
-            type: "info",
-            showCancelButton: false,
-            confirmButtonColor: "#3085d6",
-            confirmButtonText: "OK!",
-        }).then(async(result) => {
-            if (result.value) {
-                const random = makeid(10);
-
-                await writer.write(random + "#");
-
-                RestRequest(
-                    "storeToken", {
-                        token: random,
-                        user: user,
-                    },
-                    function(data) {}
-                );
-                Swal.fire("Fertig!", "Der Tag wurde geschrieben!", "success");
-            }
-        });
-    }
 });
 
-var scan = true;
-var scanUser = true;
-var temp = "";
-async function startCheck() {
+function startScan() {
     scan = true;
-    scanUser = true;
-    document.getElementById("testCard").disabled = true;
-    document.getElementById("stopTest").disabled = false;
-    while (scan) {
-        const { value, done } = await reader.read();
-        temp += value;
-        if (temp.endsWith("#") && scanUser) {
-            temp = temp.replace(" ", "").replace("#", "");
-            token = temp;
-            RestRequest(
-                "loadUser", {
-                    token: token,
-                },
-                function(data) {
-                    document.getElementById("read_username").value = data.data.username;
-                    document.getElementById("read_token").value = token;
-                    document.getElementById("read_name").value = data.data.name;
-                    temp = "";
-                    scanUser = false;
+    document.getElementById("startScan").classList.add("d-none");
+    document.getElementById("stopScan").classList.remove("d-none");
+}
 
-                    document.getElementById("testCard").disabled = false;
-                    document.getElementById("stopTest").disabled = true;
-                }
-            );
+function stopScan() {
+    scan = false;
+    document.getElementById("startScan").classList.remove("d-none");
+    document.getElementById("stopScan").classList.add("d-none");
+}
 
-            temp = "";
-        } else if (!scanUser) {
-            temp = "";
+document.addEventListener('keypress', e => {
+    if (scan) {
+        console.log(e.keyCode);
+        if (e.keyCode === 13) {
+            e.preventDefault();
+            if (code.length > 10) {
+                RestRequest("getBook", {
+                    isbn: code
+                }, function(data) {
+                    document.getElementById('selectBookContent').innerHTML = b64DecodeUnicode(data.data.html);
+                    document.getElementById("openSelectBook").click();
+                });
+                code = "";
+                stopScan();
+            }
+        } else {
+            code += e.key;
+        }
+
+        if (!reading) {
+            reading = true;
+            setTimeout(() => {
+                code = "";
+                reading = false;
+            }, 1000);
         }
     }
+});
+
+function selectBook(isbn, title, subtitle, publisher, description, pages, publish_date, thumbnail) {
+    document.getElementById("isbn").value = isbn;
+    document.getElementById("title").value = b64DecodeUnicode(title);
+    document.getElementById("subtitle").value = b64DecodeUnicode(subtitle);
+    document.getElementById("publisher").value = b64DecodeUnicode(publisher);
+    $('#description').val(b64DecodeUnicode(description));
+    document.getElementById("pages").value = pages;
+    document.getElementById("publish").value = new Date(b64DecodeUnicode(publish_date)).toLocaleDateString("de-DE");
+
+    pond.addFiles(thumbnail);
 }
 
-function stopCheck() {
-    scan = false;
-    document.getElementById("testCard").disabled = false;
-    document.getElementById("stopTest").disabled = true;
-}
-
-function makeid(length) {
-    let result = "";
-    const characters =
-        "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-    const charactersLength = characters.length;
-    let counter = 0;
-    while (counter < length) {
-        result += characters.charAt(Math.floor(Math.random() * charactersLength));
-        counter += 1;
+function addBook() {
+    var check = 0;
+    if (document.getElementById('isbn').value == "") {
+        iziToast.error({
+            title: 'Error!',
+            message: 'Bitte folgendes Feld ausfüllen: ISBN'
+        });
+        check = 1;
     }
-    return result;
+    if (document.getElementById('title').value == "") {
+        iziToast.error({
+            title: 'Error!',
+            message: 'Bitte folgendes Feld ausfüllen: Titel'
+        });
+        check = 1;
+    }
+    if (document.getElementById('publisher').value == "") {
+        iziToast.error({
+            title: 'Error!',
+            message: 'Bitte folgendes Feld ausfüllen: Verlag'
+        });
+        check = 1;
+    }
+    if (document.getElementById('publish').value == "") {
+        iziToast.error({
+            title: 'Error!',
+            message: 'Bitte folgendes Feld ausfüllen: Veröffentlichung'
+        });
+        check = 1;
+    }
+    if (document.getElementById('pages').value == "") {
+        iziToast.error({
+            title: 'Error!',
+            message: 'Bitte folgendes Feld ausfüllen: Seiten'
+        });
+        check = 1;
+    }
+    if (document.getElementById('authors').value == "") {
+        iziToast.error({
+            title: 'Error!',
+            message: 'Bitte folgendes Feld ausfüllen: Autoren'
+        });
+        check = 1;
+    }
+    if (document.getElementById('genres').value == "") {
+        iziToast.error({
+            title: 'Error!',
+            message: 'Bitte folgendes Feld ausfüllen: Genres'
+        });
+        check = 1;
+    }
+    var images = [];
+
+    for (var i = 0; i < pond.getFiles().length; i++) {
+        images.push(pond.getFile(i).getFileEncodeBase64String());
+    }
+
+    if (images.length == 0) {
+        iziToast.error({
+            title: 'Error!',
+            message: 'Bitte lade ein Bild hoch'
+        });
+        check = 1;
+    }
+    if (check == 1) {
+        iziToast.warning({
+            title: 'Achtung!',
+            message: 'Die Anfrage wurde gestoppt!'
+        });
+        return;
+    }
+    RestRequest("newBook", {
+        isbn: document.getElementById('isbn').value,
+        title: document.getElementById('title').value,
+        subtitle: document.getElementById('subtitle').value,
+        publisher: document.getElementById('publisher').value,
+        publish: document.getElementById('publish').value,
+        pages: document.getElementById('pages').value,
+        authors: document.getElementById('authors').value,
+        genres: document.getElementById('genres').value,
+        description: $('#description').val(),
+        images: JSON.stringify(images)
+    }, function(data) {
+        if (data.response.typ == "success") {
+            document.getElementById('isbn').value = "";
+            document.getElementById('title').value = "";
+            document.getElementById('subtitle').value = "";
+            document.getElementById('publisher').value = "";
+            document.getElementById('publish').value = "";
+            document.getElementById('pages').value = "";
+            document.getElementById('authors').value = "";
+            $('#description').val('');
+            tagElements["genres_i"].resetTags();
+            tagElements["authors_i"].resetTags();
+            pond.removeFiles();
+        }
+    });
 }

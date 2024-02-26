@@ -7,7 +7,7 @@ class Login
     public function isLoggedin()
     {
         if (isset($_SESSION['username'])) {
-            if (!(new User())->error) {
+            if (!(new User())->isError()) {
                 return true;
             } else {
                 return false;

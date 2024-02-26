@@ -2,14 +2,14 @@
 require '../server.php';
 
 use de\eriktunsch\library\user\User;
+use de\eriktunsch\library\utils\MysqlConnector;
 
 if (!$Login->isLoggedin()) {
     $actual_link = "https://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}";
     echo "<meta http-equiv='refresh' content='0; URL=/login/index.php?ref=" . $actual_link . "'>";
     die;
 }
-    $db = new mysqli($Variable->getGlobalVar("dbhost"), $Variable->getGlobalVar("dbuser"), $Variable->getGlobalVar("dbpass"), $Variable->getGlobalVar("dbdb"));
-
+$db = (new MysqlConnector())->getConnection($Variable->getGlobalVar("dbhost"), $Variable->getGlobalVar("dbuser"), $Variable->getGlobalVar("dbpass"), $Variable->getGlobalVar("dbdb"));
     // Database connection info 
     $dbDetails = array(
         'host' => $Variable->getGlobalVar("dbhost"),

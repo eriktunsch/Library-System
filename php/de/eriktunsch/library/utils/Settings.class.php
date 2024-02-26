@@ -10,7 +10,7 @@ class Settings
     public function getSettings($key)
     {
         $Variable = new Variable();
-        $db = new mysqli($Variable->getGlobalVar("dbhost"), $Variable->getGlobalVar("dbuser"), $Variable->getGlobalVar("dbpass"), $Variable->getGlobalVar("dbdb"));
+        $db = (new MysqlConnector())->getConnection($Variable->getGlobalVar("dbhost"), $Variable->getGlobalVar("dbuser"), $Variable->getGlobalVar("dbpass"), $Variable->getGlobalVar("dbdb"));        
         $stmt = $db->prepare("SELECT * FROM settings WHERE `key` =? ");
         $stmt->bind_param("s", $key);
         $stmt->execute();
@@ -22,7 +22,7 @@ class Settings
     public function setSettings($key, $value)
     {
         $Variable = new Variable();
-        $db = new mysqli($Variable->getGlobalVar("dbhost"), $Variable->getGlobalVar("dbuser"), $Variable->getGlobalVar("dbpass"), $Variable->getGlobalVar("dbdb"));
+        $db = (new MysqlConnector())->getConnection($Variable->getGlobalVar("dbhost"), $Variable->getGlobalVar("dbuser"), $Variable->getGlobalVar("dbpass"), $Variable->getGlobalVar("dbdb"));        
         $stmt = $db->prepare("UPDATE settings SET value=? WHERE `key` =? ");
         $stmt->bind_param("ss", $value, $key);
         $stmt->execute();

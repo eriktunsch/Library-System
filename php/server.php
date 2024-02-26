@@ -1,4 +1,7 @@
 <?php
+
+use de\eriktunsch\library\utils\MysqlConnector;
+
 require 'defines.php';
 require 'composer/vendor/autoload.php';
 require 'de/eriktunsch/library/autoloader.class.php';
@@ -34,4 +37,4 @@ if ($Settings->getSettings("maintenance") == "true") {
     }
 }
 
-$db = new mysqli($Variable->getGlobalVar("dbhost"), $Variable->getGlobalVar("dbuser"), $Variable->getGlobalVar("dbpass"), $Variable->getGlobalVar("dbdb"));
+$db = (new MysqlConnector())->getConnection($Variable->getGlobalVar("dbhost"), $Variable->getGlobalVar("dbuser"), $Variable->getGlobalVar("dbpass"), $Variable->getGlobalVar("dbdb"));

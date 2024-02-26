@@ -8,8 +8,6 @@ $(function() {
     $('.selectpicker').selectpicker();
 });
 
-lazyload();
-
 var element = document.getElementsByClassName('btn');
 var i;
 for (i = 0; i < element.length; i++) {

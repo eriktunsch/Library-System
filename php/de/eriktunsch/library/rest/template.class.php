@@ -3,6 +3,7 @@ namespace de\eriktunsch\library\rest\queries;
 
 use \de\eriktunsch\library\rest\Responses;
 use \de\eriktunsch\library\rest\ResponseGenerator;
+use de\eriktunsch\library\utils\MysqlConnector;
 use \de\eriktunsch\library\utils\Variable;
 use mysqli;
 
@@ -21,8 +22,7 @@ class template
         $this->ResponseGenerator = new ResponseGenerator();
         $this->Variable = new Variable();
     
-        $this->db = new mysqli($this->Variable->getGlobalVar("dbhost"), $this->Variable->getGlobalVar("dbuser"), $this->Variable->getGlobalVar("dbpass"), $this->Variable->getGlobalVar("dbdb"));
-    }
+        $db = (new MysqlConnector())->getConnection($Variable->getGlobalVar("dbhost"), $Variable->getGlobalVar("dbuser"), $Variable->getGlobalVar("dbpass"), $Variable->getGlobalVar("dbdb"));    }
 
     public function execute($_data)
     {

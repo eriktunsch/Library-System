@@ -54,9 +54,31 @@ if (!isset($_GET['code'])) {
     // resource owner.
     $resourceOwner = $provider->getResourceOwner($accessToken);
 
+    $stmt = $db->prepare('SELECT id FROM users WHERE username=?');
+    $stmt->bind_param("s", $resourceOwner->toArray()["preferred_username"]);
+    $stmt->execute();
+
+    if ($stmt->get_result()->num_rows == 0) {
+      $stmt = $db->prepare('INSERT INTO users (username, name, mail) VALUES (?, ?, ?)');
+      $stmt->bind_param("sss", $resourceOwner->toArray()["preferred_username"], $resourceOwner->toArray()["name"], $resourceOwner->toArray()["email"]);
+      $stmt->execute();
+    } else {
+      $stmt = $db->prepare('UPDATE users SET mail=? WHERE username=?');
+      $stmt->bind_param("ss", $resourceOwner->toArray()["email"], $resourceOwner->toArray()["preferred_username"]);
+      $stmt->execute();
+    }
+
     //var_export($resourceOwner->toArray());
 
     $_SESSION["username"] = $resourceOwner->toArray()["preferred_username"];
+
+    if (in_array("bib-admin", $resourceOwner->toArray()["groups"])) {
+      $admin = true;
+    } else {
+      $admin = false;
+    }
+
+    $_SESSION["isAdmin"] = $admin;
 
     header("Location: https://" . $Settings->getSettings("url"));
     die();

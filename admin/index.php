@@ -1,185 +1,144 @@
 <?php
 
+use de\eriktunsch\library\utils\html\MessageContainer;
+
+$title = "Verwaltung";
 include('../php/server.php');
-
-use de\eriktunsch\library\user\User;
-
 if (!$Login->isLoggedin()) {
-    $actual_link = "https://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}";
-    echo "<meta http-equiv='refresh' content='0; URL=/login/index.php?ref=" . $actual_link . "'>";
-    die;
+  $actual_link = "https://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}";
+  echo "<meta http-equiv='refresh' content='0; URL=/login/?ref=" . $actual_link . "'>";
+  die;
 }
 include('../php/html/menu.php');
 
+if (!$User->isAdmin()) {
+  echo (new MessageContainer())->displayMessageContainer("danger", "Keine Berechtigung!", "Sie besitze keine Berechtigungen, um auf diese Seite zuzugreifen.", "Bitte stellen Sie sicher, dass Sie mit dem korrekten Account eingeloggt sind.");
+} else { ?>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-body">
+          <div class="d-flex flex-wrap align-items-center justify-content-between">
+            <ul class="d-flex nav nav-pills mb-0 text-center profile-tab" data-toggle="slider-tab" id="profile-pills-tab" role="tablist">
+              <li class="nav-item">
+                <a class="nav-link active show" data-bs-toggle="tab" href="#admin-books" role="tab" aria-selected="false">Bücher</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-12">
+      <div class="tab-content">
+        <div id="admin-books" class="tab-pane fade active show">
+          <div class="row">
+            <div class="col-xl-4">
+              <div class="card">
+                <div class="card-header">
+                  <div class="header-title">
+                    <h4 class="card-title">Buch hinzufügen</h4>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <div class="row mb-3">
+                    <div class="col">
+                      <button type="button form-control" id="startScan" class="btn btn-soft-success w-100" onclick="startScan()">Scan starten</button>
+                      <button type="button form-control" id="stopScan" class="btn btn-soft-danger w-100 d-none" onclick="stopScan()">Scan stoppen</button>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col">
+                      <div class="form-floating custom-form-floating form-group mb-3">
+                        <input type="number" class="form-control" id="isbn" placeholder="ISBN">
+                        <label for="isbn">ISBN</label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col">
+                      <div class="form-floating custom-form-floating form-group mb-3">
+                        <input type="text" class="form-control" id="title" placeholder="Titel">
+                        <label for="title">Titel</label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col">
+                      <div class="form-floating custom-form-floating form-group mb-3">
+                        <input type="text" class="form-control" id="subtitle" placeholder="Untertitel">
+                        <label for="subtitle">Untertitel</label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col">
+                      <div class="form-floating custom-form-floating form-group mb-3">
+                        <input type="text" class="form-control" id="publisher" placeholder="Verlag">
+                        <label for="publisher">Verlag</label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-8">
+                      <div class="form-floating custom-form-floating form-group mb-3">
+                        <input type="text" class="form-control date_flatpicker" id="publish" placeholder="Veröffentlichung">
+                        <label for="publish">Veröffentlichung</label>
+                      </div>
+                    </div>
+                    <div class="col-4">
+                      <div class="form-floating custom-form-floating form-group mb-3">
+                        <input type="number" class="form-control" id="pages" placeholder="Seiten">
+                        <label for="pages">Seiten</label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Autoren</span>
+                    <div class="tags-input form-control tag-bg-primary" data-splitchars="[;']" id="authors_i" data-id="authors" data-name="authors"></div>
+                  </div>
+                  <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Genres</span>
+                    <div class="tags-input form-control tag-bg-primary" data-splitchars="[;']" id="genres_i" data-id="genres" data-name="genres"></div>
+                  </div>
+                  <div class="input-group mb-3">
+                    <span class="input-group-text">Beschreibung</span>
+                    <textarea class="form-control" aria-label="Beschreibung" id="description"></textarea>
+                  </div>
+                  <input type="thumbnail" class="filepond" id="thumbnail" data-max-files="1" />
+
+                  <button type="button" class="btn btn-soft-success mt-2 w-100" onclick="addBook()">Buch hinzufügen</button>
+                  <button type="button" class="btn btn-soft-primary d-none" data-bs-toggle="modal" id="openSelectBook" data-bs-target="#selectBook">
+                    Auswahl öffnen
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-8">
+              <div class="card">
+                <div class="card-header">
+                  <div class="header-title">
+                    <h4 class="card-title">vorhandene Bücher</h4>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <?php echo $Table->printTableHead("books-table", array("ISBN", "Titel", "Genres", "Autoren", "Verlag", "Verfügbar", "")); ?>
+                  <?php echo $Table->printTableFooter(); ?>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <?php echo $Modal->printModalHead("selectBook", "Bitte wähle das richtige Buch aus", "min-width: 70%"); ?>
+  <div class="row" id="selectBookContent"></div>
+  <?php echo $Modal->printModalFooter(); ?>
+<?php
+  echo $LoadResource->insertJS("intern/admin.js");
+}
 ?>
-<title><?php echo $Settings->getSettings("html_title"); ?> - Admin</title>
-
-<br>
-<br>
-<br>
-<div style="transition-duration: 0.5s; max-width: 90% !important; margin: 0 auto;">
-    <?php if ($User->isAdmin()) { ?>
-        <div class="row mt-3" style="vertical-align: middle">
-            <div class="col-lg col-md-9 col-sm-9" style="background: #f1f1f1; box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.5); margin: 0 auto; ; border-radius: 15px; padding-left: 0px; padding-right: 0px; margin-right: 15px">
-                <div style="background: #5E24C3; width: 100%; padding: 8px 0px 5px 10px;color: white; margin-bottom: 15px;">
-                    <p style="font-size: 20px; margin-bottom: 0px"><i class="fa-solid fa-plus" style="margin-right: 5px;"></i>Neuen Artikel</p>
-                </div>
-                <div style="padding: 15px">
-                    <form style="color: #757575; padding: 15px" id="new_item">
-
-                        <div class="form-row mb-4">
-                            <div class="col-md-6">
-                                <div class="input-group mb-1">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text input-group-text-own" id="basic-addon1">Name</span>
-                                    </div>
-                                    <input type="text" id="name" class="form-control">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="input-group mb-1">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text input-group-text-own" id="basic-addon1">Preis</span>
-                                    </div>
-                                    <input type="number" step="0.01" id="price" class="form-control">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-row mb-4">
-                            <div class="col-md-6">
-                                <div class="input-group mb-1">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text input-group-text-own" id="basic-addon1">EAN</span>
-                                    </div>
-                                    <input type="text" id="ean" class="form-control">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="input-group mb-1">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text input-group-text-own" id="basic-addon1">Bild</span>
-                                    </div>
-                                    <input type="file" id="picture" class="form-control">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="col-md-12">
-                                <button class="btn btn-outline-primary btn-rounded btn-block z-depth-0 mt-2 waves-effect" type="button" onclick="newItem();">Hinzufügen</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-            <div class="col-lg col-md-3 col-sm-3" style="background: #f1f1f1; box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.5); margin: 0 auto; ; border-radius: 15px; padding-left: 0px; padding-right: 0px;">
-                <div style="background: #5E24C3; width: 100%; padding: 8px 0px 5px 10px;color: white; margin-bottom: 15px;">
-                    <p style="font-size: 20px; margin-bottom: 0px"><i class="fa-solid fa-road-circle-check" style="margin-right: 5px;"></i>Karte/Chip testen</p>
-                </div>
-                <div style="padding: 15px">
-                    <form style="color: #757575; padding: 15px">
-
-                        <div class="form-row mb-4">
-                            <div class="col-md-5">
-                                <div class="input-group mb-1">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text input-group-text-own" id="basic-addon1">Username</span>
-                                    </div>
-                                    <input type="text" id="read_username" class="form-control" disabled>
-                                </div>
-                            </div>
-                            <div class="col-md-5">
-                                <div class="input-group mb-1">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text input-group-text-own" id="basic-addon1">Name</span>
-                                    </div>
-                                    <input type="text" id="read_name" class="form-control" disabled>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-row mb-4">
-                            <div class="col-md-12">
-                                <div class="input-group mb-1">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text input-group-text-own" id="basic-addon1">Token</span>
-                                    </div>
-                                    <input type="text" id="read_token" class="form-control" disabled>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="col-md-12">
-                                <button class="btn btn-outline-success btn-rounded z-depth-0 mr-2 waves-effect" type="button" id="testCard" onclick="startCheck()">Test Card</button>
-                                <button class="btn btn-outline-danger btn-rounded z-depth-0 mr-2 waves-effect" type="button" id="stopTest" onclick="stopCheck()" disabled>Stop Testing</button></p>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-        <div class="row mt-3" style="vertical-align: middle">
-
-            <div class="col-lg col-md-6 col-sm-6" style='background: #f1f1f1; box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.5); border-radius: 15px; margin-top: 25px; margin-right: 15px; padding: 0px'>
-                <div style="background: #5E24C3; width: 100%; padding: 8px 0px 5px 10px;color: white; margin-bottom: 15px;">
-                    <p style="font-size: 20px; margin-bottom: 0px"><i class="fa-solid fa-users" style="margin-right: 5px;"></i>User
-                        <button class="btn btn-outline-primary btn-rounded z-depth-0 mr-2 waves-effect" type="button" id="connect">Connect to writer</button>
-                </div>
-                <div style="padding: 15px">
-                    <?php
-                    echo $Table->printTableHead("table-user", array("Username", "Vorname", "Nachname", "Guthaben", ""));
-
-
-                    for ($i = 0; $i < count($users); $i++) {
-                        echo "<tr>";
-                        echo "<td>" . $users[$i]["cn"][0] . "</td>";
-                        echo "<td>" . $users[$i]["givenname"][0] . "</td>";
-                        echo "<td>" . $users[$i]["sn"][0] . "</td>";
-                        echo "<td id='balance_" . $users[$i]["cn"][0] . "'>" . (new User($users[$i]["cn"][0]))->getBalance() . " Euro</td>";
-                        echo '<td><button class="btn btn-outline-success btn-sm btn-rounded z-depth-0 mt-2 waves-effect" type="button" onclick="loadBalancer(\'' . $users[$i]["cn"][0] . '\');openModal(\'balancer\');">Balance</button><button class="btn btn-outline-warning btn-sm btn-rounded z-depth-0 mt-2 waves-effect writeNFC" data-id="' . $users[$i]["cn"][0] . '" type="button">Write NFC Tag</button></td>';
-                        echo "</tr>";
-                    }
-                    echo $Table->printTableFooter(); ?>
-                </div>
-            </div>
-
-            <div class="col-lg col-md-6 col-sm-6" style='background: #f1f1f1; box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.5); border-radius: 15px; margin-top: 25px; padding: 0px'>
-                <div style="background: #5E24C3; width: 100%; padding: 8px 0px 5px 10px;color: white; margin-bottom: 15px;">
-                    <p style="font-size: 20px; margin-bottom: 0px"><i class="fa-solid fa-meteor" style="margin-right: 5px;"></i>Artikel</p>
-                </div>
-                <div style="padding: 15px">
-                    <?php
-                    echo $Table->printTableHead("table-items", array("ID", "Bild", "Name", "Preis", "EAN", ""));
-                    echo $Table->printTableFooter(); ?>
-                </div>
-            </div>
-        </div>
-
-        <div style='background: #f1f1f1; box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.5); margin: 0 auto; ; border-radius: 15px; margin-top: 25px;'>
-            <div style="background: #5E24C3; width: 100%; padding: 8px 0px 5px 10px;color: white; margin-bottom: 15px;">
-                <p style="font-size: 20px; margin-bottom: 0px"><i class="fa-regular fa-credit-card" style="margin-right: 5px;"></i>Einkaushistorie</p>
-            </div>
-            <div style="padding: 15px">
-                <?php
-                echo $Table->printTableHead("table-historyAll", array("Datum", "username", "Bild", "Artikel", "Preis", "Anzahl"));
-                echo $Table->printTableFooter(); ?>
-            </div>
-        </div>
-
-        <?php echo $Modal->printModalHead("changer", "Change Item", "style=\"max-width: 50%\""); ?>
-        <div id="changer_content"></div>
-        <?php echo $Modal->printModalFooter(); ?>
-        <?php echo $Modal->printModalHead("balancer", "Balance User", "style=\"max-width: 50%\""); ?>
-        <div id="balancer_content"></div>
-        <?php echo $Modal->printModalFooter(); ?>
-        <?php
-        echo $LoadResource->insertJS("intern/admin.js");
-
-        ?>
-
-    <?php } else {
-        echo $MessageContainer->displayMessageContainer("Permission denied!", "danger", true);
-    } ?>
-</div>
-
 
 <?php
 include('../php/html/footer.php'); ?>

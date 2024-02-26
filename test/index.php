@@ -1,9 +1,6 @@
 <?php
 
 use \de\eriktunsch\library\user\User;
-use LdapRecord\Container;
-use LdapRecord\Connection;
-use LdapRecord\Models\Entry;
 
 include('../php/server.php');
 ?>
