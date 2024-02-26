@@ -29,44 +29,9 @@ if ($User->isAdmin()) {
     // The `db` parameter represents the column name in the database.  
     // The `dt` parameter represents the DataTables column identifier. 
     $columns = array(
-        array('db' => 'isbn',  'dt' => 0),
-        array(
-            'db'        => 'title',
-            'dt'        => 1,
-            'formatter' => function ($d, $row) {
-                return $d . " - " . $row["subtitle"];
-            }
-        ),
-        array(
-            'db'        => 'genres',
-            'dt'        => 2,
-            'formatter' => function ($d, $row) {
-                $returner = "";
-                $array = json_decode($d, true);
-                for ($i = 0; $i < count($array); $i++) {
-                    $returner .= '<span class="badge bg-primary mx-1"> ' . $array[$i] . ' </span>';
-                }
-
-                return $returner;
-            }
-        ),
-        array(
-            'db'        => 'authors',
-            'dt'        => 3,
-            'formatter' => function ($d, $row) {
-                $returner = "";
-                $array = json_decode($d, true);
-                for ($i = 0; $i < count($array); $i++) {
-                    $returner .= '<span class="badge bg-primary mx-1"> ' . $array[$i] . ' </span>';
-                }
-
-                return $returner;
-            }
-        ),
-        array('db' => 'publisher',  'dt' => 4),
         array(
             'db'        => 'isbn',
-            'dt'        => 5,
+            'dt'        => 0,
             'formatter' => function ($d, $row) {
                 global $db;
                 $stmt = $db->prepare('SELECT id FROM rents WHERE isbn=? AND returned=NULL');
@@ -81,8 +46,46 @@ if ($User->isAdmin()) {
             }
         ),
         array(
+            'db'        => 'title',
+            'dt'        => 1,
+            'formatter' => function ($d, $row) {
+                if ($row["subtitle"] != "") {
+                    return $d . " - " . $row["subtitle"];
+                } else {
+                    return $d;
+                }
+            }
+        ),
+        array(
+            'db'        => 'genres',
+            'dt'        => 2,
+            'formatter' => function ($d, $row) {
+                $returner = "";
+                $array = json_decode($d, true);
+                for ($i = 0; $i < count($array); $i++) {
+                    $returner .= '<span class="badge bg-primary mx-1"> ' . $array[$i] . ' </span><br>';
+                }
+
+                return $returner;
+            }
+        ),
+        array(
+            'db'        => 'authors',
+            'dt'        => 3,
+            'formatter' => function ($d, $row) {
+                $returner = "";
+                $array = json_decode($d, true);
+                for ($i = 0; $i < count($array); $i++) {
+                    $returner .= '<span class="badge bg-primary mx-1"> ' . $array[$i] . ' </span><br>';
+                }
+
+                return $returner;
+            }
+        ),
+        array('db' => 'publisher',  'dt' => 4),
+        array(
             'db'        => 'isbn',
-            'dt'        => 6,
+            'dt'        => 5,
             'formatter' => function ($d, $row) {
                 return '<button class="btn btn-outline-warning btn-sm btn-rounded z-depth-0 mt-2 waves-effect" type="button" onclick="loadChanger(\'' . $d . '\');openModal(\'changer\');">Change</button><button class="btn btn-outline-danger btn-sm btn-rounded z-depth-0 mt-2 waves-effect" type="button" onclick="deleteItem(\'' . $d . '\')">Delete</button>';
             }

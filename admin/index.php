@@ -121,7 +121,7 @@ if (!$User->isAdmin()) {
                   </div>
                 </div>
                 <div class="card-body">
-                  <?php echo $Table->printTableHead("books-table", array("ISBN", "Titel", "Genres", "Autoren", "Verlag", "Verfügbar", "")); ?>
+                  <?php echo $Table->printTableHead("books-table", array("Verfügbarkeit", "Titel", "Genres", "Autoren", "Verlag", "")); ?>
                   <?php echo $Table->printTableFooter(); ?>
                 </div>
               </div>
