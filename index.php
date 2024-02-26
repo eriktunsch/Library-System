@@ -44,7 +44,7 @@ include('php/html/menu.php'); ?>
             </div>
          </div>
       </div>
-        </div
+</div>
   <?php
   echo $LoadResource->insertJS("intern/home.js");
 
