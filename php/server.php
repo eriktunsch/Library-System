@@ -27,7 +27,6 @@ $Client = new \de\eriktunsch\library\utils\Client();
 $Variable = new \de\eriktunsch\library\utils\Variable();
 $User = new \de\eriktunsch\library\user\User();
 $Login = new \de\eriktunsch\library\user\Login();
-$Geo = new \de\eriktunsch\library\utils\Geo();
 
 if ($Settings->getSettings("maintenance") == "true") {
     if (!in_array($Client->getIP(), json_decode($Settings->getSettings("maintenance_ignore")))) {
