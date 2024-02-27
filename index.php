@@ -53,7 +53,7 @@ include('php/html/menu.php'); ?>
             </div>
          </div>
       </div>
-
+<!--
       <form class="d-grid gap-card">
                             <div class="form-group mb-2">
                                 <div class="input-group">
@@ -74,9 +74,9 @@ include('php/html/menu.php'); ?>
                                 </div>
                             </div>
                             <button class="btn btn-primary">Archive</button>
-                        </form>
+       </form>
                     
-</div>
+</div> -->
   <?php
   echo $LoadResource->insertJS("intern/home.js");
 
