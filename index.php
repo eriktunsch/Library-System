@@ -88,22 +88,9 @@ include('php/html/menu.php'); ?>
             </div>
          </div>
       </div>
+</div>
 
-      <div class="card">
-                    <div class="card-body">
-                        <div class="user-post-data">
-                            <div class="d-flex flex-wrap">                             
-                                    <h5 class="mb-0 d-inline-block">Newsletter</h5>
-                                </div>
-                           </div>
-                     </div>
-                   <div class="mt-3">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi nulla dolor, ornare at commodo non, feugiat non nisi.</p>
-                        </div>
-                        </div>
-                    </div>
-                </div>                    
-</div> 
+     
   <?php
   echo $LoadResource->insertJS("intern/home.js");
 
