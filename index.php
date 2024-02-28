@@ -76,8 +76,7 @@ include('php/html/menu.php'); ?>
             <div class="card-body p-6">
                 <h5>Montag</h5>
                 <div class="text-center">
-                    <h1 class="counter mb-2" style="visibility: visible;">-108.56K</h1>
-                    <p class="mb-0">Lorem ipsum dolor sit amet</p>
+                    <h2 class="counter mb-2" style="visibility: visible;"> 09-13 Uhr</h2>
                 </div>
             </div>
         </div>
@@ -87,8 +86,7 @@ include('php/html/menu.php'); ?>
             <div class="card-body p-6">
                 <h5>Dienstag</h5>
                 <div class="text-center">
-                    <h1 class="counter mb-2" style="visibility: visible;">-425.20K</h1>
-                    <p class="mb-0">Lorem ipsum dolor sit amet</p>
+                    <h2 class="counter mb-2" style="visibility: visible;">09-13 Uhr</h2>
                 </div>
             </div>
         </div>
@@ -98,8 +96,7 @@ include('php/html/menu.php'); ?>
             <div class="card-body p-6">
                 <h5>Mittwoch</h5>
                 <div class="text-center">
-                    <h1 class="counter mb-2" style="visibility: visible;">-380.40K</h1>
-                    <p class="mb-0">Lorem ipsum dolor sit amet</p>
+                    <h2 class="counter mb-2" style="visibility: visible;">09-13 Uhr</h2>
                 </div>
             </div>
         </div>
@@ -109,8 +106,7 @@ include('php/html/menu.php'); ?>
             <div class="card-body p-6">
                 <h5>Donnerstag</h5>
                 <div class="text-center">
-                    <h1 class="counter mb-2" style="visibility: visible;">-380.40K</h1>
-                    <p class="mb-0">Lorem ipsum dolor sit amet</p>
+                    <h2 class="counter mb-2" style="visibility: visible;">09-13 Uhr</h2>
                 </div>
             </div>
         </div>
@@ -120,8 +116,7 @@ include('php/html/menu.php'); ?>
             <div class="card-body p-6">
                 <h5>Freitag</h5>
                 <div class="text-center">
-                    <h1 class="counter mb-2" style="visibility: visible;">-380.40K</h1>
-                    <p class="mb-0">Lorem ipsum dolor sit amet</p>
+                    <h2 class="counter mb-2" style="visibility: visible;">09-13 Uhr</h2>
                 </div>
             </div>
         </div>
@@ -131,8 +126,7 @@ include('php/html/menu.php'); ?>
             <div class="card-body p-6">
                 <h5>Verantwortliche</h5>
                 <div class="text-center">
-                    <h1 class="counter mb-2" style="visibility: visible;">-380.40K</h1>
-                    <p class="mb-0">Lorem ipsum dolor sit amet</p>
+                    <h2 class="counter mb-2" style="visibility: visible;">Fr. Ka</h2>
                 </div>
             </div>
         </div>
