@@ -132,6 +132,18 @@ include('php/html/menu.php'); ?>
         </div>
     </div>
 </div>
+<div class="row row-cols-1">
+    <div class="col">
+        <div class="card">
+            <div class="card-body p-6">
+                <h3>Newsletter</h3>
+                <div class="text-center">
+                    <h5 class="counter mb-2" style="visibility: visible;"> Datum: </h5>
+                    <p>...</p>
+                </div>
+            </div>
+        </div>
+    </div>
   <?php
   echo $LoadResource->insertJS("intern/home.js");
 
