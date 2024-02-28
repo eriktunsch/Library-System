@@ -70,7 +70,7 @@ include('php/html/menu.php'); ?>
       </div>
 </div>
 
-<div class="row row-cols-3">
+<div class="row row-cols-6">
     <div class="col">
         <div class="card">
             <div class="card-body p-6">
