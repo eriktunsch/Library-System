@@ -73,10 +73,16 @@ include('php/html/menu.php'); ?>
             </div>
          </div>
       </div>
+      <div class="col-lg-3 col-md-6">
+         <div class="card">
+            <div class="card-body">
+               <div class="d-flex justify-content-between align-items-center">
+                  <div class="bg-info text-white rounded p-3">
+                  <svg class="icon-32" width="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">                                <path fill-rule="evenodd" clip-rule="evenodd" d="M14.2124 7.76241C14.2124 10.4062 12.0489 12.5248 9.34933 12.5248C6.6507 12.5248 4.48631 10.4062 4.48631 7.76241C4.48631 5.11865 6.6507 3 9.34933 3C12.0489 3 14.2124 5.11865 14.2124 7.76241ZM2 17.9174C2 15.47 5.38553 14.8577 9.34933 14.8577C13.3347 14.8577 16.6987 15.4911 16.6987 17.9404C16.6987 20.3877 13.3131 21 9.34933 21C5.364 21 2 20.3666 2 17.9174ZM16.1734 7.84875C16.1734 9.19506 15.7605 10.4513 15.0364 11.4948C14.9611 11.6021 15.0276 11.7468 15.1587 11.7698C15.3407 11.7995 15.5276 11.8177 15.7184 11.8216C17.6167 11.8704 19.3202 10.6736 19.7908 8.87118C20.4885 6.19676 18.4415 3.79543 15.8339 3.79543C15.5511 3.79543 15.2801 3.82418 15.0159 3.87688C14.9797 3.88454 14.9405 3.90179 14.921 3.93246C14.8955 3.97174 14.9141 4.02253 14.9396 4.05607C15.7233 5.13216 16.1734 6.44206 16.1734 7.84875ZM19.3173 13.7023C20.5932 13.9466 21.4317 14.444 21.7791 15.1694C22.0736 15.7635 22.0736 16.4534 21.7791 17.0475C21.2478 18.1705 19.5335 18.5318 18.8672 18.6247C18.7292 18.6439 18.6186 18.5289 18.6333 18.3928C18.9738 15.2805 16.2664 13.8048 15.5658 13.4656C15.5364 13.4493 15.5296 13.4263 15.5325 13.411C15.5345 13.4014 15.5472 13.3861 15.5697 13.3832C17.0854 13.3545 18.7155 13.5586 19.3173 13.7023Z" fill="currentColor"></path>                            </svg>                        
                   </div>
                   <div class="text-end">
-                        Mitgliederzahl
-                        <h2 class="counter" style="visibility: visible;">x</h2>
+                        Mitgliederzahl 
+                   <h2 class="counter" style="visibility: visible;">x</h2>
                   </div>
                </div>
             </div>
@@ -86,65 +92,14 @@ include('php/html/menu.php'); ?>
       <div class="card">
                     <div class="card-body">
                         <div class="user-post-data">
-                            <div class="d-flex flex-wrap">
-                                <div class="media-support-user-img me-3">
-                                    <img class="rounded-circle p-1 bg-soft-danger img-fluid avatar-60" src="../../assets/images/avatars/02.png" alt="">
+                            <div class="d-flex flex-wrap">                             
+                                    <h5 class="mb-0 d-inline-block">Newsletter</h5>
                                 </div>
-                                <div class="media-support-info mt-2">
-                                    <h5 class="mb-0 d-inline-block">Ira Membrit</h5>
-                                    <p class="mb-0 text-primary">6 hour ago</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mt-3">
+                           </div>
+                     </div>
+                   <div class="mt-3">
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi nulla dolor, ornare at commodo non, feugiat non nisi.</p>
                         </div>
-                        <div class="comment-area mt-3">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="like-block position-relative d-flex align-items-center">
-                                    <div class="d-flex align-items-center">                                    
-                                        <p class="mb-0">
-                                            <svg class="icon-18" width="18" viewBox="0 0 24 24">
-                                                <path fill="currentColor" d="M5,9V21H1V9H5M9,21A2,2 0 0,1 7,19V9C7,8.45 7.22,7.95 7.59,7.59L14.17,1L15.23,2.06C15.5,2.33 15.67,2.7 15.67,3.11L15.64,3.43L14.69,8H21C22.11,8 23,8.9 23,10V12C23,12.26 22.95,12.5 22.86,12.73L19.84,19.78C19.54,20.5 18.83,21 18,21H9M9,19H18.03L21,12V10H12.21L13.34,4.68L9,9.03V19Z"></path>
-                                            </svg> 
-                                            140 Likes</p>
-                                        <p class="ms-3 mb-0">comments</p>
-                                    </div>
-                                </div>
-                                <div class="share-block d-flex align-items-center feather-icon me-3">
-                                    <a href="javascript:void();" data-bs-toggle="offcanvas" data-bs-target="#share-btn" aria-controls="share-btn">
-                                    <span class="ms-1">
-                                        <svg class="icon-18" width="18" viewBox="0 0 24 24">
-                                            <path fill="currentColor" d="M18 16.08C17.24 16.08 16.56 16.38 16.04 16.85L8.91 12.7C8.96 12.47 9 12.24 9 12S8.96 11.53 8.91 11.3L15.96 7.19C16.5 7.69 17.21 8 18 8C19.66 8 21 6.66 21 5S19.66 2 18 2 15 3.34 15 5C15 5.24 15.04 5.47 15.09 5.7L8.04 9.81C7.5 9.31 6.79 9 6 9C4.34 9 3 10.34 3 12S4.34 15 6 15C6.79 15 7.5 14.69 8.04 14.19L15.16 18.34C15.11 18.55 15.08 18.77 15.08 19C15.08 20.61 16.39 21.91 18 21.91S20.92 20.61 20.92 19C20.92 17.39 19.61 16.08 18 16.08M18 4C18.55 4 19 4.45 19 5S18.55 6 18 6 17 5.55 17 5 17.45 4 18 4M6 13C5.45 13 5 12.55 5 12S5.45 11 6 11 7 11.45 7 12 6.55 13 6 13M18 20C17.45 20 17 19.55 17 19S17.45 18 18 18 19 18.45 19 19 18.55 20 18 20Z"></path>
-                                        </svg>
-                                        99 Share</span></a>
-                                </div>
-                            </div>
-                            <hr>
-                            <ul class="post-comments p-0 list-inline">
-                                <li class="mb-3">
-                                    <div class="d-flex flex-wrap">
-                                        <div class="user-img">
-                                            <img src="../../assets/images/avatars/03.png" alt="userimg" class="p-1 bg-soft-primary avatar-60 rounded-circle img-fluid">
-                                        </div>
-                                        <div class="comment-data-block ms-3">
-                                            <h6 class="mb-2">Monty Carlo</h6>
-                                            <p class="mb-0">Lorem ipsum dolor sit amet</p>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                            <form class="form" action="#">
-                                <div class="input-group mb-3">
-                                    <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
-                                    <button type="button" class="btn input-group-text btn-primary" id="basic-addon2">
-                                        <svg class="icon-24" width="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M21.4274 2.5783C20.9274 2.0673 20.1874 1.8783 19.4974 2.0783L3.40742 6.7273C2.67942 6.9293 2.16342 7.5063 2.02442 8.2383C1.88242 8.9843 2.37842 9.9323 3.02642 10.3283L8.05742 13.4003C8.57342 13.7163 9.23942 13.6373 9.66642 13.2093L15.4274 7.4483C15.7174 7.1473 16.1974 7.1473 16.4874 7.4483C16.7774 7.7373 16.7774 8.2083 16.4874 8.5083L10.7164 14.2693C10.2884 14.6973 10.2084 15.3613 10.5234 15.8783L13.5974 20.9283C13.9574 21.5273 14.5774 21.8683 15.2574 21.8683C15.3374 21.8683 15.4274 21.8683 15.5074 21.8573C16.2874 21.7583 16.9074 21.2273 17.1374 20.4773L21.9074 4.5083C22.1174 3.8283 21.9274 3.0883 21.4274 2.5783Z" fill="currentColor"></path>
-                                            <path opacity="0.4" fill-rule="evenodd" clip-rule="evenodd" d="M3.01049 16.8079C2.81849 16.8079 2.62649 16.7349 2.48049 16.5879C2.18749 16.2949 2.18749 15.8209 2.48049 15.5279L3.84549 14.1619C4.13849 13.8699 4.61349 13.8699 4.90649 14.1619C5.19849 14.4549 5.19849 14.9299 4.90649 15.2229L3.54049 16.5879C3.39449 16.7349 3.20249 16.8079 3.01049 16.8079ZM6.77169 18.0003C6.57969 18.0003 6.38769 17.9273 6.24169 17.7803C5.94869 17.4873 5.94869 17.0133 6.24169 16.7203L7.60669 15.3543C7.89969 15.0623 8.37469 15.0623 8.66769 15.3543C8.95969 15.6473 8.95969 16.1223 8.66769 16.4153L7.30169 17.7803C7.15569 17.9273 6.96369 18.0003 6.77169 18.0003ZM7.02539 21.5683C7.17139 21.7153 7.36339 21.7883 7.55539 21.7883C7.74739 21.7883 7.93939 21.7153 8.08539 21.5683L9.45139 20.2033C9.74339 19.9103 9.74339 19.4353 9.45139 19.1423C9.15839 18.8503 8.68339 18.8503 8.39039 19.1423L7.02539 20.5083C6.73239 20.8013 6.73239 21.2753 7.02539 21.5683Z" fill="currentColor"></path>
-                                        </svg>
-                                    </button>
-                                </div>
-                            </form>
                         </div>
                     </div>
                 </div>                    
