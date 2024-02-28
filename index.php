@@ -70,38 +70,41 @@ include('php/html/menu.php'); ?>
       </div>
 </div>
 
-<div class="row row-cols-1">
-<div class="card">
+<div class="row row-cols-3">
+    <div class="col">
+        <div class="card">
             <div class="card-body p-3">
-               <h5>Assets</h5>
-               <div class="text-center">
-                  <h1 class="counter mb-2" style="visibility: visible;">-108.56K</h1>
-                  <p class="mb-0">Lorem ipsum dolor sit amet</p>
-               </div>
+                <h5>Assets</h5>
+                <div class="text-center">
+                    <h1 class="counter mb-2" style="visibility: visible;">-108.56K</h1>
+                    <p class="mb-0">Lorem ipsum dolor sit amet</p>
+                </div>
             </div>
-         </div>
-         <div class="card">
+        </div>
+    </div>
+    <div class="col">
+        <div class="card">
             <div class="card-body p-3">
-               <h5>Liabilities</h5>
-               <div class="text-center">
-                  <h1 class="counter mb-2" style="visibility: visible;">-425.20K</h1>
-                  <p class="mb-0">Lorem ipsum dolor sit amet</p>
-               </div>
+                <h5>Liabilities</h5>
+                <div class="text-center">
+                    <h1 class="counter mb-2" style="visibility: visible;">-425.20K</h1>
+                    <p class="mb-0">Lorem ipsum dolor sit amet</p>
+                </div>
             </div>
-         </div>
-         <div class="card">
+        </div>
+    </div>
+    <div class="col">
+        <div class="card">
             <div class="card-body p-3">
-               <h5>Working Capital</h5>
-               <div class="text-center">
-                  <h1 class="counter mb-2" style="visibility: visible;">-380.40K</h1>
-                  <p class="mb-0">Lorem ipsum dolor sit amet</p>
-               </div>
+                <h5>Working Capital</h5>
+                <div class="text-center">
+                    <h1 class="counter mb-2" style="visibility: visible;">-380.40K</h1>
+                    <p class="mb-0">Lorem ipsum dolor sit amet</p>
+                </div>
             </div>
-         </div>
-      </div>
-      
-
-     
+        </div>
+    </div>
+</div>
   <?php
   echo $LoadResource->insertJS("intern/home.js");
 
