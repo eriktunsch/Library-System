@@ -73,7 +73,7 @@ include('php/html/menu.php'); ?>
 <div class="row row-cols-3">
     <div class="col">
         <div class="card">
-            <div class="card-body p-3">
+            <div class="card-body p-6">
                 <h5>Assets</h5>
                 <div class="text-center">
                     <h1 class="counter mb-2" style="visibility: visible;">-108.56K</h1>
@@ -84,7 +84,7 @@ include('php/html/menu.php'); ?>
     </div>
     <div class="col">
         <div class="card">
-            <div class="card-body p-3">
+            <div class="card-body p-6">
                 <h5>Liabilities</h5>
                 <div class="text-center">
                     <h1 class="counter mb-2" style="visibility: visible;">-425.20K</h1>
@@ -95,7 +95,7 @@ include('php/html/menu.php'); ?>
     </div>
     <div class="col">
         <div class="card">
-            <div class="card-body p-3">
+            <div class="card-body p-6">
                 <h5>Working Capital</h5>
                 <div class="text-center">
                     <h1 class="counter mb-2" style="visibility: visible;">-380.40K</h1>
