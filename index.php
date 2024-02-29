@@ -72,7 +72,7 @@ include('php/html/menu.php');?>
 
 <div class="row row-cols-2">
     <div class="col">
-        <div class="card" style='width:70%'>
+        <div class="card" style='width:170%'>
             <div class="card-body p-6">
                 <h3>Newsletter</h3>
                 <div class="text-center">
