@@ -87,7 +87,7 @@ if ($User->isAdmin()) {
             'db'        => 'isbn',
             'dt'        => 5,
             'formatter' => function ($d, $row) {
-                return '<button class="btn btn-outline-warning btn-sm btn-rounded z-depth-0 mt-2 waves-effect" type="button" onclick="loadChanger(\'' . $d . '\');openModal(\'changer\');">Change</button><button class="btn btn-outline-danger btn-sm btn-rounded z-depth-0 mt-2 waves-effect" type="button" onclick="deleteItem(\'' . $d . '\')">Delete</button>';
+                return '<button class="btn btn-soft-warning btn-sm btn-rounded z-depth-0 mt-2 waves-effect" type="button" onclick="loadChanger(\'' . $d . '\');openModal(\'changer\');">ändern</button><br><button class="btn btn-soft-danger btn-sm btn-rounded z-depth-0 mt-2 waves-effect" type="button" onclick="deleteBook(\'' . $d . '\')">Löschen</button>';
             }
         ),
     );
