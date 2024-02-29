@@ -74,11 +74,14 @@ include('php/html/menu.php');?>
     <div class="col">
         <div class="card">
             <div class="card-body p-6">
-                <h2>Öffnungszeiten & Kontakt </h2>
+                <h3>Öffnungszeiten & Kontakt </h3>
+                <hr>
                 <div class="text-center">
-                    <h4 class="counter mb-2" style="visibility: visible;"> <bold> Montags - Freitags:</bold> 09.30 - 14.30 </h4>
-                    <h4 class="counter mb-2" style="visibility: visible;"> <bold> Verantwortliche:</bold> Frau Schmidt </h4>
-                    <h4 class="counter mb-2" style="visibility: visible;"> <bold> Kontakt:</bold> Email </h4>
+                    <h6 class="counter mb-2" style="visibility: visible; text-align: left"> <bold> Montags - Freitags:</bold> 09.30 - 14.30 </h6>
+                    <hr>
+                    <h6 class="counter mb-2" style="visibility: visible; text-align: left"> <bold> Verantwortliche:</bold> Frau Schmidt </h6>
+                    <hr>
+                    <h6 class="counter mb-2" style="visibility: visible; text-align: left"> <bold> Kontakt:</bold> Email </h6>
                 </div>
             </div>
         </div>
