@@ -93,6 +93,27 @@ var books_table = $('#books-table').DataTable({
     }
   });
 
+  function deleteBook(isbn) {
+    Swal.fire({
+        title: 'Bist du sicher?',
+        text: "Diese Änderung kann nicht rückgängig gemacht werden!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Ja!',
+        cancelButtonText: 'Nein!'
+    }).then((result) => {
+        if (result.value) {
+            RestRequest("deleteBook", {
+                isbn: isbn
+            }, function(data) {
+                books_table.ajax.reload();
+            });
+        }
+    })
+}
+
 function startScan() {
     scan = true;
     document.getElementById("startScan").classList.add("d-none");
