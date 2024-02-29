@@ -33,6 +33,66 @@ pond = FilePond.create(document.getElementById('thumbnail'), {
     })
 });
 
+var books_table = $('#books-table').DataTable({
+    processing: true,
+    serverSide: false,
+    ajax: '/php/data/books.php',
+    "language": {
+      "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/German.json"
+    },
+    scrollX: true,
+    layout: {
+      top1: {
+        searchPanes: {
+          panes: [{
+              header: 'Verfügbarkeit',
+              options: [{
+                  label: 'Verfügbar',
+                  value: function(rowData, rowIdx) {
+                    return rowData[0] === '<i class="text-success fa-regular fa-circle-check"></i>';
+                  }
+                },
+                {
+                  label: 'nicht Verfügbar',
+                  value: function(rowData, rowIdx) {
+                    return rowData[0] === '<i class="text-danger fa-regular fa-circle-xmark"></i>';
+                  }
+                }
+              ],
+              dtOpts: {
+                searching: false,
+                order: [
+                  [2, 'desc']
+                ]
+              }
+            },
+            {
+              header: 'Genre',
+              options: genres,
+              dtOpts: {
+                searching: true,
+              }
+            },
+            {
+              header: 'Autor',
+              options: authors,
+              dtOpts: {
+                searching: true,
+              }
+            },
+            {
+              header: 'Verlag',
+              options: publishers,
+              dtOpts: {
+                searching: true,
+              }
+            }
+          ]
+        }
+      }
+    }
+  });
+
 function startScan() {
     scan = true;
     document.getElementById("startScan").classList.add("d-none");

@@ -136,13 +136,12 @@ if (!$User->isAdmin()) {
   <div class="row" id="selectBookContent"></div>
   <?php echo $Modal->printModalFooter(); ?>
   <?php
-  echo $LoadResource->insertJS("intern/admin.js");
   $genres = array();
-  $genres_;
+  $genres_ = "";
   $authors = array();
-  $authors_;
+  $authors_ = "";
   $publishers = array();
-  $publishers_;
+  $publishers_ = "";
   $stmt = $db->query('SELECT genres FROM books');
 
   while (($obj = $stmt->fetch_object()) != null) {
@@ -155,6 +154,7 @@ if (!$User->isAdmin()) {
           label: "' . $json[$i] . '",
           value: function (rowData, rowIdx) {
               return rowData[2].includes("' . $json[$i] . '");
+          }
           },';
       }
     }
@@ -172,6 +172,7 @@ if (!$User->isAdmin()) {
           label: "' . $json[$i] . '",
           value: function (rowData, rowIdx) {
               return rowData[3].includes("' . $json[$i] . '");
+          }
           },';
       }
     }
@@ -180,81 +181,24 @@ if (!$User->isAdmin()) {
   $stmt = $db->query('SELECT publisher FROM books');
 
   while (($obj = $stmt->fetch_object()) != null) {
-    if (!in_array($obj, $authors)) {
-      array_push($publishers, $obj);
+    if (!in_array($obj->publisher, $authors)) {
+      array_push($publishers, $obj->publisher);
 
-      $authors_ .= '{
-          label: "' . $obj . '",
+      $publishers_ .= '{
+          label: "' . $obj->publisher . '",
           value: function (rowData, rowIdx) {
-              return rowData[4].includes("' . $obj . '");
+              return rowData[4].includes("' . $obj->publisher . '");
+          }
           },';
     }
-  }
-  ?>
-  <script type="text/javascript">
-    $(function() {
-    var books_table = $('#books-table').DataTable({
-      processing: true,
-      serverSide: false,
-      ajax: '/php/data/books.php',
-      "language": {
-        "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/German.json"
-      },
-      scrollX: true,
-      layout: {
-        top1: {
-          searchPanes: {
-            panes: [{
-                header: 'Verfügbarkeit',
-                options: [{
-                    label: 'Verfügbar',
-                    value: function(rowData, rowIdx) {
-                      return rowData[0] === '<i class="text-success fa-regular fa-circle-check"></i>';
-                    }
-                  },
-                  {
-                    label: 'nicht Verfügbar',
-                    value: function(rowData, rowIdx) {
-                      return rowData[0] === '<i class="text-danger fa-regular fa-circle-xmark"></i>';
-                    }
-                  }
-                ],
-                dtOpts: {
-                  searching: false,
-                  order: [
-                    [2, 'desc']
-                  ]
-                }
-              },
-              {
-                header: 'Genre',
-                options: [<?php echo $genres_; ?>],
-                dtOpts: {
-                  searching: true,
-                }
-              },
-              {
-                header: 'Autor',
-                options: [<?php echo $authors_; ?>],
-                dtOpts: {
-                  searching: true,
-                }
-              },
-              {
-                header: 'Verlag',
-                options: [<?php echo $publishers_; ?>],
-                dtOpts: {
-                  searching: true,
-                }
-              }
-            ]
-          }
-        }
-      }
-    });
-  });
+  } ?>
+  <script>
+    var authors = [<?php echo $authors_; ?>];
+    var genres = [<?php echo $genres_; ?>];
+    var publishers = [<?php echo $publishers_; ?>];
   </script>
-<?php
+  <?php echo $LoadResource->insertJS("intern/admin.js");
+
 }
 ?>
 
