@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="de" dir="ltr">
+<html lang="de" dir="ltr" data-bs-theme="dark">
 <?php echo "<script type='text/javascript'>window.url = '" . $Settings->getSettings('url') . "'</script>"; ?>
 
 <head>

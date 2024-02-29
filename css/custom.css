@@ -622,3 +622,7 @@ body.uikit .btn-download {
 .top-1 {
     top: 1rem;
 }
+
+.badge.rounded-pill {
+    background-color: #d63384 !important;
+  }

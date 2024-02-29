@@ -1222,7 +1222,6 @@ div.dtsp-panesContainer div.dtsp-searchPane div.dtsp-topRow button.dtsp-countBut
 }
 
 div.dtsp-panesContainer div.dtsp-searchPane div.dtsp-topRow div.dtsp-subRow1 button {
-    border-right: none;
     margin-right: 1px
 }
 
@@ -1306,8 +1305,8 @@ html[data-bs-theme=dark] div.dtsp-topRow button {
 }
 
 html[data-bs-theme=dark] div.dtsp-panesContainer button.btn-subtle {
-    background-color: rgb(33, 37, 41);
-    border: var(--bs-border-width) solid var(--bs-border-color)
+    background-color: #151824 !important;
+    border: var(--bs-border-width) solid rgba(255,255,255,0.2)
 }
 
 html[data-bs-theme=dark] div.dtsp-panesContainer button.btn-subtle:hover {
