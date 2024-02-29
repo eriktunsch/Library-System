@@ -70,6 +70,35 @@ include('php/html/menu.php');?>
       </div>
 </div>
 
+<!--<div class="row row-cols-2">
+    <div class="col" style="flex: 70%;">
+        <div class="card">
+            <div class="card-body p-6">
+                <h3>Newsletter</h3>
+                <div class="text-center">
+                    <h5 class="counter mb-2" style="visibility: visible;"> Datum: </h5>
+                    <p>...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col" style="flex: 30%;">
+        <div class="card">
+            <div class="card-body p-6">
+                <h3>Öffnungszeiten & Kontakt </h3>
+                <hr>
+                <div class="text-center">
+                    <h5 class="counter mb-2" style="visibility: visible; text-align: left"> <b> Montags - Freitags:</b> 09.30 - 14.30 </h5>
+                    <hr>
+                    <h5 class="counter mb-2" style="visibility: visible; text-align: left"> <b> Verantwortliche:</b> Frau Schmidt </h5>
+                    <hr>
+                    <h5 class="counter mb-2" style="visibility: visible; text-align: left"> <b> Kontakt:</b> Email </h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+-->
 <div class="row row-cols-2">
     <div class="col" style="flex: 70%;">
         <div class="card">
@@ -98,6 +127,7 @@ include('php/html/menu.php');?>
         </div>
     </div>
 </div>
+
   <?php
   echo $LoadResource->insertJS("intern/home.js");
   ?>
