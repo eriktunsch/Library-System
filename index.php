@@ -1,4 +1,4 @@
-<?php
+ <?php
 $title = "Home";
 include('php/server.php');
 if (!$Login->isLoggedin()) {
@@ -70,7 +70,7 @@ include('php/html/menu.php'); ?>
       </div>
 </div>
 
-<div class="row row-cols-6">
+<div class="row row-cols-5">
     <div class="col">
         <div class="card">
             <div class="card-body p-6">
@@ -121,16 +121,6 @@ include('php/html/menu.php'); ?>
             </div>
         </div>
     </div>
-    <div class="col">
-        <div class="card">
-            <div class="card-body p-6">
-                <h5>Verantwortliche</h5>
-                <div class="text-center">
-                    <h2 class="counter mb-2" style="visibility: visible;">Fr. Ka</h2>
-                </div>
-            </div>
-        </div>
-    </div>
 </div>
 <div class="row row-cols-1">
     <div class="col">
@@ -144,9 +134,10 @@ include('php/html/menu.php'); ?>
             </div>
         </div>
     </div>
+</div>
+
   <?php
   echo $LoadResource->insertJS("intern/home.js");
-
   ?>
 
 <?php
