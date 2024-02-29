@@ -83,8 +83,8 @@ include('php/html/menu.php');?>
             </div>
         </div>
     </div>
-</div>
-    <div class="card">
+    <div class="col">
+        <div class="card">
             <div class="card-body p-6">
                 <h3>Öffnungszeiten & Kontakt </h3>
                 <hr>
@@ -97,6 +97,8 @@ include('php/html/menu.php');?>
                 </div>
             </div>
         </div>
+    </div>
+</div>
   <?php
   echo $LoadResource->insertJS("intern/home.js");
   ?>
