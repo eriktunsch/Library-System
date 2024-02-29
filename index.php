@@ -77,57 +77,15 @@ include('php/html/menu.php');?>
                 <h3>Öffnungszeiten & Kontakt </h3>
                 <hr>
                 <div class="text-center">
-                    <h6 class="counter mb-2" style="visibility: visible; text-align: left"> <bold> Montags - Freitags:</bold> 09.30 - 14.30 </h6>
+                    <h5 class="counter mb-2" style="visibility: visible; text-align: left"> <b> Montags - Freitags:</b> 09.30 - 14.30 </h5>
                     <hr>
-                    <h6 class="counter mb-2" style="visibility: visible; text-align: left"> <bold> Verantwortliche:</bold> Frau Schmidt </h6>
+                    <h5 class="counter mb-2" style="visibility: visible; text-align: left"> <b> Verantwortliche:</b> Frau Schmidt </h5>
                     <hr>
-                    <h6 class="counter mb-2" style="visibility: visible; text-align: left"> <bold> Kontakt:</bold> Email </h6>
+                    <h5 class="counter mb-2" style="visibility: visible; text-align: left"> <b> Kontakt:</b> Email </h5>
                 </div>
             </div>
         </div>
     </div>
-    <!--
-    <div class="col">
-        <div class="card">
-            <div class="card-body p-6">
-                <h5>Dienstag</h5>
-                <div class="text-center">
-                    <h2 class="counter mb-2" style="visibility: visible;">09-13 Uhr</h2>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col">
-        <div class="card">
-            <div class="card-body p-6">
-                <h5>Mittwoch</h5>
-                <div class="text-center">
-                    <h2 class="counter mb-2" style="visibility: visible;">09-13 Uhr</h2>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col">
-        <div class="card">
-            <div class="card-body p-6">
-                <h5>Donnerstag</h5>
-                <div class="text-center">
-                    <h2 class="counter mb-2" style="visibility: visible;">09-13 Uhr</h2>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col">
-        <div class="card">
-            <div class="card-body p-6">
-                <h5>Freitag</h5>
-                <div class="text-center">
-                    <h2 class="counter mb-2" style="visibility: visible;">09-13 Uhr</h2>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> -->
 <div class="row row-cols-1">
     <div class="col">
         <div class="card">
