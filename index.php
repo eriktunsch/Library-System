@@ -6,7 +6,7 @@ if (!$Login->isLoggedin()) {
   echo "<meta http-equiv='refresh' content='0; URL=/login/index.php?ref=" . $actual_link . "'>";
   die;
 }
-include('php/html/menu.php'); ?>
+include('php/html/menu.php');?>
 <div class="row row-cols-1">
 <div class="col-lg-3 col-md-6">
          <div class="card">
@@ -74,7 +74,7 @@ include('php/html/menu.php'); ?>
     <div class="col">
         <div class="card">
             <div class="card-body p-6">
-                <h5>Montag</h5>
+                <h5>Montag - Freitag</h5>
                 <div class="text-center">
                     <h2 class="counter mb-2" style="visibility: visible;"> 09-13 Uhr</h2>
                 </div>
