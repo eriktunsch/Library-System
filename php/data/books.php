@@ -39,9 +39,9 @@ if ($User->isAdmin()) {
                 $stmt->execute();
                 $res = $stmt->get_result()->num_rows;
                 if ($res == 0) {
-                    return '<i class="text-success fa-regular fa-circle-check"></i>';
+                    return '<i class="text-success fa-regular fa-circle-check"></i> Verfügbar';
                 } else {
-                    return '<i class="text-danger fa-regular fa-circle-xmark"></i>';
+                    return '<i class="text-danger fa-regular fa-circle-xmark"></i> nicht Verfügbar';
                 }
             }
         ),
@@ -50,7 +50,7 @@ if ($User->isAdmin()) {
             'dt'        => 1,
             'formatter' => function ($d, $row) {
                 if ($row["subtitle"] != "") {
-                    return $d . " - " . $row["subtitle"];
+                    return $d . "<br><i>" . $row["subtitle"] . "</i>";
                 } else {
                     return $d;
                 }

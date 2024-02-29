@@ -49,13 +49,13 @@ var books_table = $('#books-table').DataTable({
               options: [{
                   label: 'Verfügbar',
                   value: function(rowData, rowIdx) {
-                    return rowData[0] === '<i class="text-success fa-regular fa-circle-check"></i>';
+                    return rowData[0] === '<i class="text-success fa-regular fa-circle-check"></i> Vefügbar';
                   }
                 },
                 {
                   label: 'nicht Verfügbar',
                   value: function(rowData, rowIdx) {
-                    return rowData[0] === '<i class="text-danger fa-regular fa-circle-xmark"></i>';
+                    return rowData[0] === '<i class="text-danger fa-regular fa-circle-xmark"></i> nicht Verfügbar';
                   }
                 }
               ],
