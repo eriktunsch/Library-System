@@ -83,6 +83,7 @@ include('php/html/menu.php');?>
             </div>
         </div>
     </div>
+    <!--
     <div class="col">
         <div class="card">
             <div class="card-body p-6">
@@ -123,7 +124,7 @@ include('php/html/menu.php');?>
             </div>
         </div>
     </div>
-</div>
+</div> -->
 <div class="row row-cols-1">
     <div class="col">
         <div class="card">
