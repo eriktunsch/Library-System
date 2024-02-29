@@ -7,6 +7,7 @@ if (!$Login->isLoggedin()) {
   die;
 }
 include('php/html/menu.php');?>
+ <link rel="icon" type="image/x-icon" href="/images/Logo.png">
 <div class="row row-cols-1">
 <div class="col-lg-3 col-md-6">
          <div class="card">
