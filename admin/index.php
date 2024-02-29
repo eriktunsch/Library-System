@@ -135,8 +135,126 @@ if (!$User->isAdmin()) {
   <?php echo $Modal->printModalHead("selectBook", "Bitte wähle das richtige Buch aus", "min-width: 70%"); ?>
   <div class="row" id="selectBookContent"></div>
   <?php echo $Modal->printModalFooter(); ?>
-<?php
+  <?php
   echo $LoadResource->insertJS("intern/admin.js");
+  $genres = array();
+  $genres_;
+  $authors = array();
+  $authors_;
+  $publishers = array();
+  $publishers_;
+  $stmt = $db->query('SELECT genres FROM books');
+
+  while (($obj = $stmt->fetch_object()) != null) {
+    $json = json_decode($obj->genres, true);
+    for ($i = 0; $i < count($json); $i++) {
+      if (!in_array($json[$i], $genres)) {
+        array_push($genres, $json[$i]);
+
+        $genres_ .= '{
+          label: "' . $json[$i] . '",
+          value: function (rowData, rowIdx) {
+              return rowData[2].includes("' . $json[$i] . '");
+          },';
+      }
+    }
+  }
+
+  $stmt = $db->query('SELECT authors FROM books');
+
+  while (($obj = $stmt->fetch_object()) != null) {
+    $json = json_decode($obj->authors, true);
+    for ($i = 0; $i < count($json); $i++) {
+      if (!in_array($json[$i], $authors)) {
+        array_push($authors, $json[$i]);
+
+        $authors_ .= '{
+          label: "' . $json[$i] . '",
+          value: function (rowData, rowIdx) {
+              return rowData[3].includes("' . $json[$i] . '");
+          },';
+      }
+    }
+  }
+
+  $stmt = $db->query('SELECT publisher FROM books');
+
+  while (($obj = $stmt->fetch_object()) != null) {
+    if (!in_array($obj, $authors)) {
+      array_push($publishers, $obj);
+
+      $authors_ .= '{
+          label: "' . $obj . '",
+          value: function (rowData, rowIdx) {
+              return rowData[4].includes("' . $obj . '");
+          },';
+    }
+  }
+  ?>
+  <script type="text/javascript">
+    $(function() {
+    var books_table = $('#books-table').DataTable({
+      processing: true,
+      serverSide: false,
+      ajax: '/php/data/books.php',
+      "language": {
+        "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/German.json"
+      },
+      scrollX: true,
+      layout: {
+        top1: {
+          searchPanes: {
+            panes: [{
+                header: 'Verfügbarkeit',
+                options: [{
+                    label: 'Verfügbar',
+                    value: function(rowData, rowIdx) {
+                      return rowData[0] === '<i class="text-success fa-regular fa-circle-check"></i>';
+                    }
+                  },
+                  {
+                    label: 'nicht Verfügbar',
+                    value: function(rowData, rowIdx) {
+                      return rowData[0] === '<i class="text-danger fa-regular fa-circle-xmark"></i>';
+                    }
+                  }
+                ],
+                dtOpts: {
+                  searching: false,
+                  order: [
+                    [2, 'desc']
+                  ]
+                }
+              },
+              {
+                header: 'Genre',
+                options: [<?php echo $genres_; ?>],
+                dtOpts: {
+                  searching: true,
+                }
+              },
+              {
+                header: 'Autor',
+                options: [<?php echo $authors_; ?>],
+                dtOpts: {
+                  searching: true,
+                }
+              },
+              {
+                header: 'Verlag',
+                options: [<?php echo $publishers_; ?>],
+                dtOpts: {
+                  searching: true,
+                }
+              }
+            ]
+          }
+        }
+      }
+    });
+  });
+  </script>
+<?php
 }
 ?>
 

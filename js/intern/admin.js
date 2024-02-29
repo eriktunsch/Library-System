@@ -33,46 +33,6 @@ pond = FilePond.create(document.getElementById('thumbnail'), {
     })
 });
 
-var books_table = $('#books-table').DataTable({
-    processing: true,
-    serverSide: false,
-    ajax: '/php/data/books.php',
-    "language": {
-        "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/German.json"
-    },
-    scrollX: true,
-    columnDefs: [{
-        searchPanes: {
-            show: true
-        },
-        targets: [0, 2, 3, 4]
-    }],
-    layout: {
-        top1: {
-            searchPanes: {
-                panes: [
-                    {
-                        header: 'Custom',
-                        options: [
-                            {
-                                label: 'Accountants from Tokyo',
-                                value: function (rowData, rowIdx) {
-                                    return rowData[2] === 'Accountant' && rowData[2] === 'Tokyo';
-                                },
-                                className: 'tokyo'
-                            }
-                        ],
-                        dtOpts: {
-                            searching: false,
-                            order: [[2, 'desc']]
-                        }
-                    }
-                ]
-            }
-        }
-    }
-});
-
 function startScan() {
     scan = true;
     document.getElementById("startScan").classList.add("d-none");
