@@ -81,7 +81,7 @@ include('php/html/menu.php');?>
                 <div class="text-center">
                     <h6 class="counter mb-2" style="visibility: visible; text-align: left"> <b> Datum: </b> 01.03.2023 </h6>
                     <hr>
-                    <p style = "font-size: 1.4em; text-align: left">
+                    <p style = "font-size: 1.25em; text-align: left">
                     Sehr geehrte Schülerschaft, <br>
                     am heutigen Tag erhielten wir neue Bücher
 
@@ -186,7 +186,7 @@ include('php/html/menu.php');?>
                               <h6>Soft UI XD Version</h6>
                               </div>
                            </td>                          
-                           <td style = "color:#CC0033">02.03.2024</td>
+                           <td style = "color:#800000">02.03.2024</td>
                            <td><div class="text-info">0.00€</div></td>
                         </tr>
                         <tr>
@@ -195,7 +195,7 @@ include('php/html/menu.php');?>
                               <h6>Soft UI XD Version</h6>
                               </div>
                            </td>                          
-                           <td style = "color:#CC0033">02.03.2024</td>
+                           <td style = "color:#800000">02.03.2024</td>
                            <td><div class="text-info">0.00€</div></td>
                         </tr>
                         <tr>
@@ -204,7 +204,7 @@ include('php/html/menu.php');?>
                               <h6>Soft UI XD Version</h6>
                               </div>
                            </td>                          
-                           <td style = "color:#CC0033">02.03.2024</td>
+                           <td style = "color:#800000">02.03.2024</td>
                            <td><div class="text-info">0.00€</div></td>
                         </tr>
                      </tbody>
