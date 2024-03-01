@@ -81,7 +81,7 @@ include('php/html/menu.php');?>
                 <div class="text-center">
                     <h6 class="counter mb-2" style="visibility: visible; text-align: left"> <b> Datum: </b> 01.03.2023 </h6>
                     <hr>
-                    <p style = "font-size: 20em; text-align: left">
+                    <p style = "font-size: 10em; text-align: left">
                     Sehr geehrte Schülerschaft, <br>
                     am heutigen Tag erhielten wir neue Bücher
 
@@ -174,9 +174,9 @@ include('php/html/menu.php');?>
                   <table id="basic-table" class="table table-striped mb-0" role="grid">
                      <thead>
                         <tr>
-                           <th><h2><b>Bücher<b></h2></th>
-                           <th><h2><b>Abgabe<b></h2></th>
-                           <th><h4><b>Mahnungen<b></h2></th>
+                           <th><h4><b>Bücher<b></h4></th>
+                           <th><h4><b>Abgabe<b></h4></th>
+                           <th><h4><b>Mahnungen<b></h4></th>
                         </tr>
                      </thead>
                      <tbody>
@@ -186,7 +186,7 @@ include('php/html/menu.php');?>
                               <h6>Soft UI XD Version</h6>
                               </div>
                            </td>                          
-                           <td><div class="text-info">02.03.2024</div></td>
+                           <td><div class="text-info" style = "color: red;">02.03.2024</div></td>
                            <td><div class="text-info">0.00€</div></td>
                         </tr>
                         <tr>
@@ -195,7 +195,7 @@ include('php/html/menu.php');?>
                               <h6>Soft UI XD Version</h6>
                               </div>
                            </td>                          
-                           <td><div class="text-info">02.03.2024</div></td>
+                           <td><div class="text-info" style = "color: red;">02.03.2024</div></td>
                            <td><div class="text-info">0.00€</div></td>
                         </tr>
                         <tr>
@@ -204,7 +204,7 @@ include('php/html/menu.php');?>
                               <h6>Soft UI XD Version</h6>
                               </div>
                            </td>                          
-                           <td><div class="text-info">02.03.2024</div></td>
+                           <td><div class="text-info" style = "color: red;">02.03.2024</div></td>
                            <td><div class="text-info">0.00€</div></td>
                         </tr>
                      </tbody>
