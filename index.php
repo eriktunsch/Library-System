@@ -111,7 +111,7 @@ include('php/html/menu.php');?>
 <!-- nun kommt die Startseite bei Login -->
 
 <div class="row row-cols-1">
-<div class="col-lg-3 col-md-4">
+<div class="col-lg-4 col-md-4">
          <div class="card"  style="flex: 25%;">
             <div class="card-body">
                <div class="d-flex justify-content-between align-items-center">
@@ -126,7 +126,7 @@ include('php/html/menu.php');?>
             </div>
          </div>
       </div>
-      <div class="col-lg-3 col-md-4">
+      <div class="col-lg-4 col-md-4">
          <div class="card"  style="flex: 25%;">
             <div class="card-body">
                <div class="d-flex justify-content-between align-items-center">
@@ -141,7 +141,7 @@ include('php/html/menu.php');?>
             </div>
          </div>
       </div>
-      <div class="col-lg-3 col-md-4">
+      <div class="col-lg-4 col-md-4">
          <div class="card"  style="flex: 50%;">
             <div class="card-body">
                <div class="d-flex justify-content-between align-items-center">
