@@ -81,8 +81,9 @@ include('php/html/menu.php');?>
                 <div class="text-center">
                     <h5 class="counter mb-2" style="visibility: visible; text-align: left"> <b> Datum: </b> 01.03.2023 </h5>
                     <hr>
-                    <p style = "font-size: 16px">Sehr geehrte Schülerschaft, <br>
-                        am heutigen Tag erhielten wir neue Bücher
+                    <p style = "font-size: 30px; text-align: left">
+                    Sehr geehrte Schülerschaft, <br>
+                    am heutigen Tag erhielten wir neue Bücher
 
                     </p>
                 </div>
@@ -173,9 +174,9 @@ include('php/html/menu.php');?>
                   <table id="basic-table" class="table table-striped mb-0" role="grid">
                      <thead>
                         <tr>
-                           <th>Bücher</th>
-                           <th>Abgabe</th>
-                           <th>Mahnungen</th>
+                           <th><h4><b>Bücher<b></h4></th>
+                           <th><h4><b>Abgabe<b></h4></th>
+                           <th><h4><b>Mahnungen<b></h4></th>
                         </tr>
                      </thead>
                      <tbody>
