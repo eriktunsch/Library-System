@@ -81,7 +81,7 @@ include('php/html/menu.php');?>
                 <div class="text-center">
                     <h6 class="counter mb-2" style="visibility: visible; text-align: left"> <b> Datum: </b> 01.03.2023 </h6>
                     <hr>
-                    <p style = "font-size: 1.25em; text-align: left">
+                    <p style = "font-size: 1.15em; text-align: left">
                     Sehr geehrte Schülerschaft, <br>
                     am heutigen Tag erhielten wir neue Bücher
 
