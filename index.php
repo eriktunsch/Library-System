@@ -96,11 +96,11 @@ include('php/html/menu.php');?>
                 <h3>Öffnungszeiten & Kontakt </h3>
                 <hr>
                 <div class="text-center">
-                    <h5 class="counter mb-2" style="visibility: visible; text-align: left"> <b> Montags - Freitags:</b> 09.30 - 14.30 </h5>
+                    <h5 class="counter mb-2" style="visibility: visible; text-align: left"> Montags - Freitags: 09.30 - 14.30 </h5>
                     <hr>
-                    <h5 class="counter mb-2" style="visibility: visible; text-align: left"> <b> Verantwortliche:</b> Frau Schmidt </h5>
+                    <h5 class="counter mb-2" style="visibility: visible; text-align: left"> Verantwortliche: Frau Schmidt </h5>
                     <hr>
-                    <h5 class="counter mb-2" style="visibility: visible; text-align: left"> <b> Kontakt:</b> Email </h5>
+                    <h5 class="counter mb-2" style="visibility: visible; text-align: left"> Kontakt: Email </h5>
                 </div>
             </div>
         </div>
