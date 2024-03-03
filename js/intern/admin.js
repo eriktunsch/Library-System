@@ -95,6 +95,7 @@ var rents_table = $("#rents-table").DataTable({
     layout: {
         top1: {
             searchPanes: {
+                layout: 'columns-3',
                 panes: [{
                     header: "Verfügbarkeit",
                     options: [{
