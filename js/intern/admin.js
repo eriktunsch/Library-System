@@ -79,9 +79,19 @@ var rents_table = $("#rents-table").DataTable({
         url: "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/German.json",
     },
     scrollX: true,
-    searchPanes: {
-        columns: [1, 2]
-    },
+    columnDefs: [{
+            searchPanes: {
+                show: true
+            },
+            targets: [1, 2]
+        },
+        {
+            searchPanes: {
+                show: false
+            },
+            targets: [0, 3, 4, 5]
+        },
+    ],
     layout: {
         top1: {
             searchPanes: {
