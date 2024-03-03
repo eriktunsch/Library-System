@@ -63,7 +63,7 @@ if ($User->isAdmin()) {
                 if ($row["disabled"] == 2) {
                     return '<button class="btn btn-soft-success btn-sm btn-rounded z-depth-0 mt-2 waves-effect" type="button" onclick="freeUser(\'' . $d . '\');">Ausleihung freigeben</button>';
                 } else {
-                    return '<button class="btn btn-soft-success btn-sm btn-rounded z-depth-0 mt-2 waves-effect" type="button" onclick="disableUser(\'' . $d . '\');">Ausleihung sperren</button>';
+                    return '<button class="btn btn-soft-danger btn-sm btn-rounded z-depth-0 mt-2 waves-effect" type="button" onclick="disableUser(\'' . $d . '\');">Ausleihung sperren</button>';
                 }
             }
         ),
