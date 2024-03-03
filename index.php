@@ -295,11 +295,13 @@ include('php/html/menu.php'); ?>
       <h3 style="margin-bottom: 0;">Merkliste</h3>
     </div>
     <hr>
+    <div class = "text-centre">
       <h5 class="counter mb-2" style="visibility: visible; text-align: left;"><b>Harry Potter</b></h5>
       <hr>
       <h5 class="counter mb-2" style="visibility: visible; text-align: left;"><b>Corpus Delicti</b></h5>
       <hr>
       <h5 class="counter mb-2" style="visibility: visible; text-align: left;"><b>Woyzeck</b></h5>
+</div>
   </div>
 </div>
 </div>
