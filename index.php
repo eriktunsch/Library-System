@@ -23,7 +23,7 @@ include('php/html/menu.php'); ?>
                   </svg>
                </div>
                <div class="text-end">
-                 <h6> Bücher </h6>
+                  <h6> Bücher </h6>
                   <h3 class="counter" style="visibility: visible;">x</h3>
                </div>
             </div>
@@ -42,7 +42,7 @@ include('php/html/menu.php'); ?>
                   </svg>
                </div>
                <div class="text-end">
-                 <h6> Insgesamt ausgeliehen </h6>
+                  <h6> Insgesamt ausgeliehen </h6>
                   <h3 class="counter" style="visibility: visible;">x</h3>
                </div>
             </div>
@@ -115,9 +115,11 @@ include('php/html/menu.php'); ?>
             <h3>Öffnungszeiten & Kontakt </h3>
             <hr>
             <div class="text-center">
-               <h6 class="counter mb-2" style="visibility: visible; text-align: left"> Montags - Freitags: 09.30 - 14.30 </h6>
+               <h6 class="counter mb-2" style="visibility: visible; text-align: left"> Montags - Freitags: 09.30 - 14.30
+               </h6>
                <hr>
-               <h6 class="counter mb-2" style="visibility: visible; text-align: left"> Verantwortliche: FrauSchmidt </h6>
+               <h6 class="counter mb-2" style="visibility: visible; text-align: left"> Verantwortliche: FrauSchmidt
+               </h6>
                <hr>
                <h6 class="counter mb-2" style="visibility: visible; text-align: left"> Kontakt: Email </h6>
             </div>
@@ -161,7 +163,7 @@ include('php/html/menu.php'); ?>
                   </svg>
                </div>
                <div class="text-end">
-                 <h6> Merklistenanzahl </h6>
+                  <h6> Merklistenanzahl </h6>
                   <h3 class="counter" style="visibility: visible;">x</h3>
                </div>
             </div>
@@ -169,75 +171,102 @@ include('php/html/menu.php'); ?>
       </div>
    </div>
 </div>
- 
-   <div class="row">
-  <div class="col-md-8">
-    <div class="card">
-    
-            <div class="card-header d-flex justify-content-between align-items-center">
-    <div class="bg-info text-white rounded p-3">
-    <svg class="icon-32" width="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">                            <path fill-rule="evenodd" clip-rule="evenodd" d="M13.45 4.88017H16.52C20.21 4.88017 22.01 6.85017 22 10.8902V15.7602C22 19.6202 19.62 22.0002 15.75 22.0002H8.24C4.39 22.0002 2 19.6202 2 15.7502V8.24017C2 4.10017 3.84 2.00017 7.47 2.00017H9.05C9.981 1.99017 10.85 2.42017 11.42 3.15017L12.3 4.32017C12.58 4.67017 13 4.88017 13.45 4.88017ZM7.37 15.2902H16.63C17.04 15.2902 17.37 14.9502 17.37 14.5402C17.37 14.1202 17.04 13.7902 16.63 13.7902H7.37C6.95 13.7902 6.62 14.1202 6.62 14.5402C6.62 14.9502 6.95 15.2902 7.37 15.2902Z" fill="currentColor"></path>                            </svg>                        
-    </div>
-    <div class="header-title ml-3" style="flex: 1;">
-        <h4 class="card-title" style="text-align: left; margin-bottom: 0; padding-left: 20px;">Informationen zur Ausleihe</h4>
-    </div>
-</div>
+
+<div class="row">
+   <div class="col-md-8">
+      <div class="card">
+
+         <div class="card-header d-flex justify-content-between align-items-center">
+            <div class="bg-info text-white rounded p-3">
+               <svg class="icon-32" width="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" clip-rule="evenodd"
+                     d="M13.45 4.88017H16.52C20.21 4.88017 22.01 6.85017 22 10.8902V15.7602C22 19.6202 19.62 22.0002 15.75 22.0002H8.24C4.39 22.0002 2 19.6202 2 15.7502V8.24017C2 4.10017 3.84 2.00017 7.47 2.00017H9.05C9.981 1.99017 10.85 2.42017 11.42 3.15017L12.3 4.32017C12.58 4.67017 13 4.88017 13.45 4.88017ZM7.37 15.2902H16.63C17.04 15.2902 17.37 14.9502 17.37 14.5402C17.37 14.1202 17.04 13.7902 16.63 13.7902H7.37C6.95 13.7902 6.62 14.1202 6.62 14.5402C6.62 14.9502 6.95 15.2902 7.37 15.2902Z"
+                     fill="currentColor"></path>
+               </svg>
+            </div>
+            <div class="header-title ml-3" style="flex: 1;">
+               <h4 class="card-title" style="text-align: left; margin-bottom: 0; padding-left: 0px;">Informationen zur
+                  Ausleihe</h4>
+            </div>
+         </div>
 
 
-      <div class="card-body p-0">
-        <div class="table-responsive mt-4">
-          <table id="basic-table" class="table table-striped mb-0" role="grid">
-            <tbody>
-              <tr>
-                <th><h5><b>Bücher</b></h5></th>
-                <th><h5><b>Abgabe</b></h5></th>
-                <th><h5><b>Mahnungen</b></h5></th>
-              </tr>
-              <tr>
-                <td><h6>Soft UI XD Version</h6></td>
-                <td style="color:#f16a1b">02.03.2024</td>
-                <td><div class="text-info">0.00€</div></td>
-              </tr>
-              <tr>
-                <td><h6>Soft UI XD Version</h6></td>
-                <td style="color:#f16a1b">02.03.2024</td>
-                <td><div class="text-info">0.00€</div></td>
-              </tr>
-              <tr>
-                <td><h6>Soft UI XD Version</h6></td>
-                <td style="color:#f16a1b">02.03.2024</td>
-                <td><div class="text-info">0.00€</div></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+         <div class="card-body p-0">
+            <div class="table-responsive mt-4">
+               <table id="basic-table" class="table table-striped mb-0" role="grid">
+                  <tbody>
+                     <tr>
+                        <th>
+                           <h5><b>Bücher</b></h5>
+                        </th>
+                        <th>
+                           <h5><b>Abgabe</b></h5>
+                        </th>
+                        <th>
+                           <h5><b>Mahnungen</b></h5>
+                        </th>
+                     </tr>
+                     <tr>
+                        <td>
+                           <h6>Soft UI XD Version</h6>
+                        </td>
+                        <td style="color:#f16a1b">02.03.2024</td>
+                        <td>
+                           <div class="text-info">0.00€</div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>
+                           <h6>Soft UI XD Version</h6>
+                        </td>
+                        <td style="color:#f16a1b">02.03.2024</td>
+                        <td>
+                           <div class="text-info">0.00€</div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>
+                           <h6>Soft UI XD Version</h6>
+                        </td>
+                        <td style="color:#f16a1b">02.03.2024</td>
+                        <td>
+                           <div class="text-info">0.00€</div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+         </div>
       </div>
-    </div>
-  </div>
-  <div class="col-md-4">
-  <div class="card">
-  <div class="card">
-    <div class="card-body p-6" style="display: flex; align-items: center;">
-      <div class="bg-success text-white rounded p-3" style="margin-right: 20px;">
-      <svg class="icon-32" width="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">                            <path fill-rule="evenodd" clip-rule="evenodd" d="M8.9 2H15.07C17.78 2 19.97 3.07 20 5.79V20.97C20 21.14 19.96 21.31 19.88 21.46C19.75 21.7 19.53 21.88 19.26 21.96C19 22.04 18.71 22 18.47 21.86L11.99 18.62L5.5 21.86C5.351 21.939 5.18 21.99 5.01 21.99C4.45 21.99 4 21.53 4 20.97V5.79C4 3.07 6.2 2 8.9 2ZM8.22 9.62H15.75C16.18 9.62 16.53 9.269 16.53 8.83C16.53 8.39 16.18 8.04 15.75 8.04H8.22C7.79 8.04 7.44 8.39 7.44 8.83C7.44 9.269 7.79 9.62 8.22 9.62Z" fill="currentColor"></path>                            </svg>                        
+   </div>
+   <div class="col-md-4">
+      <div class="card">
+         <div class="card">
+            <div class="card-body p-6" style="display: flex; align-items: center;">
+               <div class="bg-success text-white rounded p-3" style="margin-right: 20px;">
+                  <svg class="icon-32" width="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                     <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M8.9 2H15.07C17.78 2 19.97 3.07 20 5.79V20.97C20 21.14 19.96 21.31 19.88 21.46C19.75 21.7 19.53 21.88 19.26 21.96C19 22.04 18.71 22 18.47 21.86L11.99 18.62L5.5 21.86C5.351 21.939 5.18 21.99 5.01 21.99C4.45 21.99 4 21.53 4 20.97V5.79C4 3.07 6.2 2 8.9 2ZM8.22 9.62H15.75C16.18 9.62 16.53 9.269 16.53 8.83C16.53 8.39 16.18 8.04 15.75 8.04H8.22C7.79 8.04 7.44 8.39 7.44 8.83C7.44 9.269 7.79 9.62 8.22 9.62Z"
+                        fill="currentColor"></path>
+                  </svg>
+               </div>
+               <h3 style="margin-bottom: 0;">Merkliste</h3>
+            </div>
+            <hr>
+            <div class="text-centre">
+               <h5 class="counter mb-2" style="text-align: left; padding-left: 30px;"><b>Harry Potter</b></h5>
+               <hr>
+               <h5 class="counter mb-2" style="text-align: left; padding-left: 30px;"><b>Corpus Delicti</b></h5>
+               <hr>
+               <h5 class="counter mb-2" style="text-align: left; padding-left: 30px;"><b>Woyzeck</b></h5>
+            </div>
+         </div>
       </div>
-      <h3 style="margin-bottom: 0;">Merkliste</h3>
-    </div>
-    <hr>
-    <div class = "text-centre">
-      <h5 class="counter mb-2" style="text-align: left; padding-left: 30px;"><b>Harry Potter</b></h5>
-      <hr>
-      <h5 class="counter mb-2" style="text-align: left; padding-left: 30px;"><b>Corpus Delicti</b></h5>
-      <hr>
-      <h5 class="counter mb-2" style="text-align: left; padding-left: 30px;"><b>Woyzeck</b></h5>
-</div>
-  </div>
-</div>
-</div>
+   </div>
 </div>
 
 
-  
+
 
 <?php
 echo $LoadResource->insertJS("intern/home.js");
