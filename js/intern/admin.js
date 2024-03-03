@@ -99,7 +99,7 @@ var rents_table = $("#rents-table").DataTable({
                 panes: [{
                     header: "Zurückgegeben",
                     options: [{
-                            label: "Zurückgegeben",
+                            label: "zurückgegeben",
                             value: function(rowData, rowIdx) {
                                 return (
                                     rowData[0].includes('<i class="text-success fa-regular fa-circle-check"></i>')
@@ -107,7 +107,7 @@ var rents_table = $("#rents-table").DataTable({
                             },
                         },
                         {
-                            label: "noch nicht zurückgegeben",
+                            label: "nicht zurückgegeben",
                             value: function(rowData, rowIdx) {
                                 return (
                                     rowData[0].includes('<i class="text-danger fa-regular fa-circle-xmark"></i>')

@@ -39,9 +39,9 @@ if ($User->isAdmin()) {
 
     while (($result = $stmt->fetch_object()) != null) {
         if ($result->subtitle != "") {
-            $users[$result->isbn] = $result->title . "<br><i>" . $result->subtitle . "</i>";
+            $books[$result->isbn] = $result->title . "<br><i>" . $result->subtitle . "</i>";
         } else {
-            $users[$result->isbn] = $result->title;
+            $books[$result->isbn] = $result->title;
         }
     }
     // Array of database columns which should be read and sent back to DataTables. 
@@ -88,7 +88,11 @@ if ($User->isAdmin()) {
             'formatter' => function ($d, $row) {
                 $date = new DateTime($d);
                 $date->modify('+14 day');
-                return $date->format('d.m.Y');
+                if (new DateTime() > $date) {
+                    return "<span class='text-danger'>" . $date->format('d.m.Y') . "</span>";
+                } else {
+                    return "<span>" . $date->format('d.m.Y') . "</span>";
+                }
             }
         ),
         array(
