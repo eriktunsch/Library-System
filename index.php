@@ -8,7 +8,7 @@ if (!$Login->isLoggedin()) {
 }
 include('php/html/menu.php');?>
 
-<!-- nun kommt die Startseite ohne Login -->
+<!-- nun beginnt die Startseite ohne Login -->
 
 <div class="row row-cols-1"> 
 <div class="col-lg-3 col-md-6">
