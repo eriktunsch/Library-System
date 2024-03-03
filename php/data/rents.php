@@ -39,9 +39,9 @@ if ($User->isAdmin()) {
 
     while (($result = $stmt->fetch_object()) != null) {
         if ($result->subtitle != "") {
-            $users[$result->isbn] = $result->title . "<br><i>" . $result->subtitle . "</i>";
+            $books[$result->isbn] = $result->title . "<br><i>" . $result->subtitle . "</i>";
         } else {
-            $users[$result->isbn] = $result->title;
+            $books[$result->isbn] = $result->title;
         }
     }
     // Array of database columns which should be read and sent back to DataTables. 
