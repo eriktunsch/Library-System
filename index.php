@@ -384,7 +384,7 @@ include('php/html/menu.php'); ?>
       </div>
    </div> -->
    <div class="row">
-  <div class="col-md-8">
+  <div class="col-md-7">
     <div class="card">
       <div class="card-header bg-info text-white rounded">
         <h4 class="card-title">Informationen zur Ausleihe</h4>
@@ -419,7 +419,7 @@ include('php/html/menu.php'); ?>
       </div>
     </div>
   </div>
-  <div class="col-md-4">
+  <div class="col-md-5">
     <div class="card">
       <div class="card-header bg-info text-white rounded">
         <div class="bg-info text-white rounded p-3" style="display: inline-block; margin-right: 20px;">
