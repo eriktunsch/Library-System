@@ -407,7 +407,7 @@ include('php/html/menu.php'); ?>
         </svg>
     </div>
     <div class="header-title ml-3" style="flex: 1;">
-        <h4 class="card-title" style="text-align: left; margin-bottom: 0; padding-left: 20px;">Informationen zur Ausleihe</h4>
+        <h4 class="card-title" style="text-align: left; margin-bottom: 0; padding-left: 50px;">Informationen zur Ausleihe</h4>
     </div>
 </div>
 
