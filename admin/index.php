@@ -23,6 +23,9 @@ if (!$User->isAdmin()) {
               <li class="nav-item">
                 <a class="nav-link active show" data-bs-toggle="tab" href="#admin-books" role="tab" aria-selected="false">Bücher</a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link show" data-bs-toggle="tab" href="#admin-rents" role="tab" aria-selected="false">Ausleihen</a>
+              </li>
             </ul>
           </div>
         </div>
@@ -123,6 +126,19 @@ if (!$User->isAdmin()) {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+        <div id="admin-rents" class="tab-pane fade">
+              <div class="card">
+                <div class="card-header">
+                  <div class="header-title">
+                    <h4 class="card-title">Ausleihen</h4>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <?php echo $Table->printTableHead("rents-table", array("Zurückgegeben", "Buch", "Schüler", "Ausgeliehen", "Fälligkeit", "")); ?>
+                  <?php echo $Table->printTableFooter(); ?>
+                </div>
           </div>
         </div>
       </div>

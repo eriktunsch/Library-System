@@ -45,34 +45,6 @@ var books_table = $("#books-table").DataTable({
         top1: {
             searchPanes: {
                 panes: [{
-                        header: "Verfügbarkeit",
-                        options: [{
-                                label: "Verfügbar",
-                                value: function(rowData, rowIdx) {
-                                    return (
-                                        rowData[0] ===
-                                        '<i class="text-success fa-regular fa-circle-check"></i> Verfügbar'
-                                    );
-                                },
-                            },
-                            {
-                                label: "nicht Verfügbar",
-                                value: function(rowData, rowIdx) {
-                                    return (
-                                        rowData[0] ===
-                                        '<i class="text-danger fa-regular fa-circle-xmark"></i> nicht Verfügbar'
-                                    );
-                                },
-                            },
-                        ],
-                        dtOpts: {
-                            searching: false,
-                            order: [
-                                [2, "desc"]
-                            ],
-                        },
-                    },
-                    {
                         header: "Genre",
                         options: genres,
                         dtOpts: {
@@ -94,6 +66,51 @@ var books_table = $("#books-table").DataTable({
                         },
                     },
                 ],
+            },
+        },
+    },
+});
+
+var rents_table = $("#rents-table").DataTable({
+    processing: true,
+    serverSide: false,
+    ajax: "/php/data/rents.php",
+    language: {
+        url: "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/German.json",
+    },
+    scrollX: true,
+    searchPanes: {
+        columns: [1, 2]
+    },
+    layout: {
+        top1: {
+            searchPanes: {
+                panes: [{
+                    header: "Verfügbarkeit",
+                    options: [{
+                            label: "Verfügbar",
+                            value: function(rowData, rowIdx) {
+                                return (
+                                    rowData[0].includes('<i class="text-success fa-regular fa-circle-check"></i>')
+                                );
+                            },
+                        },
+                        {
+                            label: "nicht Verfügbar",
+                            value: function(rowData, rowIdx) {
+                                return (
+                                    rowData[0].includes('<i class="text-danger fa-regular fa-circle-xmark"></i>')
+                                );
+                            },
+                        },
+                    ],
+                    dtOpts: {
+                        searching: false,
+                        order: [
+                            [0, "desc"]
+                        ],
+                    },
+                }],
             },
         },
     },

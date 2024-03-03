@@ -20,28 +20,31 @@ if ($User->isAdmin()) {
     );
 
     // DB table to use 
-    $table = 'books';
+    $table = 'rents';
 
     // Table's primary key 
-    $primaryKey = 'isbn';
+    $primaryKey = 'id';
+
+    $users = array();
+
+    $stmt = $db->query("SELECT id,name FROM users");
+
+    while (($result = $stmt->fetch_object()) != null) {
+        $users[$result->id] = $result->name;
+    }
 
     // Array of database columns which should be read and sent back to DataTables. 
     // The `db` parameter represents the column name in the database.  
     // The `dt` parameter represents the DataTables column identifier. 
     $columns = array(
         array(
-            'db'        => 'isbn',
+            'db'        => 'returned',
             'dt'        => 0,
             'formatter' => function ($d, $row) {
-                global $db;
-                $stmt = $db->prepare('SELECT id FROM rents WHERE isbn=? AND returned IS NULL');
-                $stmt->bind_param("s", $d);
-                $stmt->execute();
-                $res = $stmt->get_result()->num_rows;
-                if ($res == 0) {
-                    return '<i class="text-success fa-regular fa-circle-check"></i> Verfügbar';
+                if ($d != NULL) {
+                    return '<i class="text-success fa-regular fa-circle-check"></i> ' . $d;
                 } else {
-                    return '<i class="text-danger fa-regular fa-circle-xmark"></i> nicht Verfügbar';
+                    return '<i class="text-danger fa-regular fa-circle-xmark"></i>';
                 }
             }
         ),
@@ -57,37 +60,38 @@ if ($User->isAdmin()) {
             }
         ),
         array(
-            'db'        => 'genres',
+            'db'        => 'user',
             'dt'        => 2,
             'formatter' => function ($d, $row) {
-                $returner = "";
-                $array = json_decode($d, true);
-                for ($i = 0; $i < count($array); $i++) {
-                    $returner .= '<span class="badge bg-primary mx-1"> ' . $array[$i] . ' </span><br>';
-                }
-
-                return $returner;
+                global $users;
+                return $users[$d];
             }
         ),
         array(
-            'db'        => 'authors',
+            'db'        => 'start',
             'dt'        => 3,
             'formatter' => function ($d, $row) {
-                $returner = "";
-                $array = json_decode($d, true);
-                for ($i = 0; $i < count($array); $i++) {
-                    $returner .= '<span class="badge bg-primary mx-1"> ' . $array[$i] . ' </span><br>';
-                }
-
-                return $returner;
+                return date("d.m.Y, H:i", strtotime($d));
             }
         ),
-        array('db' => 'publisher',  'dt' => 4),
         array(
-            'db'        => 'isbn',
+            'db'        => 'start',
+            'dt'        => 4,
+            'formatter' => function ($d, $row) {
+                $date = new DateTime($d);
+                $date->modify('+14 day');
+                return $date->format('d.m.Y');
+            }
+        ),
+        array(
+            'db'        => 'id',
             'dt'        => 5,
             'formatter' => function ($d, $row) {
-                return '<button class="btn btn-soft-warning btn-sm btn-rounded z-depth-0 mt-2 waves-effect" type="button" onclick="loadChanger(\'' . $d . '\');">ändern</button><br><button class="btn btn-soft-danger btn-sm btn-rounded z-depth-0 mt-2 waves-effect" type="button" onclick="deleteBook(\'' . $d . '\')">Löschen</button>';
+                if ($row["returned"] == NULL) {
+                    return '<button class="btn btn-soft-warning btn-sm btn-rounded z-depth-0 mt-2 waves-effect" type="button" onclick="return(\'' . $d . '\');">zurückgegeben</button>';
+                } else {
+                    return '';
+                }
             }
         ),
     );
