@@ -395,7 +395,7 @@ include('php/html/menu.php'); ?>
                   </svg>
                </div>
                <div class="header-title">
-                  <h4 class="card-title">Informationen zur Ausleihe</h4>
+                  <h4 class="card-title" style = "text-align: left">Informationen zur Ausleihe</h4>
                </div>
             </div>
       <div class="card-body p-0">
