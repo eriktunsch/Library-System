@@ -21,10 +21,10 @@ if (!$User->isAdmin()) {
           <div class="d-flex flex-wrap align-items-center justify-content-between">
             <ul class="d-flex nav nav-pills mb-0 text-center profile-tab" data-toggle="slider-tab" id="profile-pills-tab" role="tablist">
               <li class="nav-item">
-                <a class="nav-link active show" data-bs-toggle="tab" href="#admin-books" role="tab" aria-selected="false">Bücher</a>
+                <a class="nav-link active show" data-bs-toggle="tab" href="#admin-books" role="tab" aria-selected="false" onclick="books_table.columns.adjust().draw();">Bücher</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link show" data-bs-toggle="tab" href="#admin-rents" role="tab" aria-selected="false">Ausleihen</a>
+                <a class="nav-link show" data-bs-toggle="tab" href="#admin-rents" role="tab" aria-selected="false" onclick="rents_table.columns.adjust().draw();">Ausleihen</a>
               </li>
             </ul>
           </div>
