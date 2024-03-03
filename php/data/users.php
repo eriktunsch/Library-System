@@ -55,7 +55,7 @@ if ($User->isAdmin()) {
             'db'        => 'newsletter',
             'dt'        => 4,
             'formatter' => function ($d, $row) {
-                if ($d == 0) {
+                if ($d == 1) {
                     return '<i class="text-success fa-regular fa-circle-check"></i> abonniert';
                 } else {
                     return '<i class="text-danger fa-regular fa-circle-xmark"></i> nicht abonniert';
