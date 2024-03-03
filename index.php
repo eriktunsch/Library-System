@@ -421,7 +421,7 @@ include('php/html/menu.php'); ?>
   </div>
   <div class="col-md-4">
     <div class="card">
-      <div class="card-body p-6">
+      <div class="card-header bg-info text-white rounded">
         <div class="bg-info text-white rounded p-3" style="display: inline-block; margin-right: 20px;">
           <svg class="icon-32" width="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path fill-rule="evenodd" clip-rule="evenodd"
@@ -429,8 +429,9 @@ include('php/html/menu.php'); ?>
               fill="currentColor"></path>
           </svg>
         </div>
-        <h3>Merkliste</h3>
-        <hr>
+        <h3 class="card-title">Merkliste</h3>
+      </div>
+      <div class="card-body p-6">
         <div class="text-centre">
           <h5 class="counter mb-2" style="text-align: left; padding-left: 50px;"><b>Harry Potter</b></h5>
           <hr>
@@ -442,6 +443,7 @@ include('php/html/menu.php'); ?>
     </div>
   </div>
 </div>
+
 
   
 
