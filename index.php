@@ -292,15 +292,15 @@ include('php/html/menu.php'); ?>
             fill="currentColor"></path>
         </svg>
       </div>
-      <h3 style="margin-bottom: 20px; text-align: margin-right">Merkliste</h3>
+      <h3 style="margin-bottom: 0; text-align:right">Merkliste</h3>
     </div>
-    <hr>
+    <hr style = "height:20px">
     <div class = "text-centre">
-      <h5 class="counter mb-2" style="visibility: visible; text-align: left; padding-left: 10px;"><b>Harry Potter</b></h5>
+      <h5 class="counter mb-2" style="visibility: visible; text-align: left; padding-left: 50px;"><b>Harry Potter</b></h5>
       <hr>
-      <h5 class="counter mb-2" style="visibility: visible; text-align: left; padding-left: 10px;"><b>Corpus Delicti</b></h5>
+      <h5 class="counter mb-2" style="visibility: visible; text-align: left; padding-left: 50px;"><b>Corpus Delicti</b></h5>
       <hr>
-      <h5 class="counter mb-2" style="visibility: visible; text-align: left; padding-left: 10px;"><b>Woyzeck</b></h5>
+      <h5 class="counter mb-2" style="visibility: visible; text-align: left; padding-left: 50px;"><b>Woyzeck</b></h5>
 </div>
   </div>
 </div>
