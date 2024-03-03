@@ -398,7 +398,7 @@ include('php/html/menu.php'); ?>
                   <h4 class="card-title" style ="text-align: left">Informationen zur Ausleihe</h4>
                </div>
             </div> -->
-            <div class="card-header d-flex align-items-center">
+            <div class="card-header d-flex justify-content-between align-items-center">
     <div class="bg-info text-white rounded p-3">
         <svg class="icon-32" width="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path fill-rule="evenodd" clip-rule="evenodd"
@@ -410,6 +410,7 @@ include('php/html/menu.php'); ?>
         <h4 class="card-title" style="text-align: left; margin-bottom: 0;">Informationen zur Ausleihe</h4>
     </div>
 </div>
+
 
       <div class="card-body p-0">
         <div class="table-responsive mt-4">
