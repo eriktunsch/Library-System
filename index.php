@@ -270,7 +270,10 @@ include('php/html/menu.php'); ?>
                         fill="currentColor"></path>
                   </svg>
                </div>
-            <h3>Merkliste </h3>
+               <div class="text-end">
+                  <h6> ausgeliehene Bücher </h6>
+                  <h3>Merkliste </h3>
+               </div>
             <hr>
             <div class="text-center">
                <h5 class="counter mb-2" style="visibility: visible; text-align: left"> <b> Harry Potter </h5>
