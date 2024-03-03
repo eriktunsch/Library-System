@@ -260,8 +260,9 @@ include('php/html/menu.php'); ?>
    </div> -->
    <!--<div class="row row-cols-2"> -->
    <div class="row">
-  <div class="col" style="flex: 70%;">
-    <div class="col-sm-12">
+ <!-- <div class="col" style="flex: 70%;"> -->
+   <!-- <div class="col-sm-12"> -->
+    <div class="col-md-8">
       <div class="card">
         <div class="card-header d-flex align-items-center">
           <div class="bg-info text-white rounded p-3">
@@ -332,7 +333,8 @@ include('php/html/menu.php'); ?>
   </div>
 </div>
 
-<div class="col" style="flex: 30%;">
+<!--<div class="col" style="flex: 30%;"> -->
+<div class="col-md-4">
   <div class="card">
     <div class="card-body p-6" style="display: flex; align-items: center;">
       <div class="bg-info text-white rounded p-3" style="margin-right: 20px;">
