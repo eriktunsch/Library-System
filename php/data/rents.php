@@ -100,7 +100,7 @@ if ($User->isAdmin()) {
             'dt'        => 5,
             'formatter' => function ($d, $row) {
                 if ($row["returned"] == NULL) {
-                    return '<button class="btn btn-soft-warning btn-sm btn-rounded z-depth-0 mt-2 waves-effect" type="button" onclick="return(\'' . $d . '\');">zurückgegeben</button>';
+                    return '<button class="btn btn-soft-warning btn-sm btn-rounded z-depth-0 mt-2 waves-effect" type="button" onclick="returnBook(\'' . $d . '\');">zurückgegeben</button>';
                 } else {
                     return '';
                 }
