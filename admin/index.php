@@ -26,6 +26,9 @@ if (!$User->isAdmin()) {
               <li class="nav-item">
                 <a class="nav-link show" data-bs-toggle="tab" href="#admin-rents" role="tab" aria-selected="false" onclick="rents_table.columns.adjust().draw();">Ausleihen</a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link show" data-bs-toggle="tab" href="#admin-users" role="tab" aria-selected="false" onclick="users_table.columns.adjust().draw();">Personen</a>
+              </li>
             </ul>
           </div>
         </div>
@@ -136,7 +139,20 @@ if (!$User->isAdmin()) {
                   </div>
                 </div>
                 <div class="card-body">
-                  <?php echo $Table->printTableHead("rents-table", array("Zurückgegeben", "Buch", "Schüler", "Ausgeliehen", "Fälligkeit", "")); ?>
+                  <?php echo $Table->printTableHead("rents-table", array("Zurückgegeben", "Buch", "Person", "Ausgeliehen", "Fälligkeit", "")); ?>
+                  <?php echo $Table->printTableFooter(); ?>
+                </div>
+          </div>
+        </div>
+        <div id="admin-user" class="tab-pane fade">
+              <div class="card">
+                <div class="card-header">
+                  <div class="header-title">
+                    <h4 class="card-title">Personen</h4>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <?php echo $Table->printTableHead("users-table", array("Status", "Nutzername", "Name", "E-Mail", "Newsletter", "")); ?>
                   <?php echo $Table->printTableFooter(); ?>
                 </div>
           </div>

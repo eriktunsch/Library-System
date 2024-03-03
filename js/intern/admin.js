@@ -127,6 +127,36 @@ var rents_table = $("#rents-table").DataTable({
     },
 });
 
+var users_table = $("#users-table").DataTable({
+    processing: true,
+    serverSide: false,
+    ajax: "/php/data/users.php",
+    language: {
+        url: "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/German.json",
+    },
+    scrollX: true,
+    columnDefs: [{
+            searchPanes: {
+                show: true
+            },
+            targets: [0, 4]
+        },
+        {
+            searchPanes: {
+                show: false
+            },
+            targets: [1, 2, 3, 5]
+        },
+    ],
+    layout: {
+        top1: {
+            searchPanes: {
+                layout: 'columns-3'
+            },
+        },
+    },
+});
+
 function deleteBook(isbn) {
     Swal.fire({
         title: "Bist du sicher?",
@@ -208,6 +238,28 @@ function returnBook(id) {
             );
         }
     });
+}
+
+function freeUser(id) {
+    RestRequest(
+        "freeUser", {
+            id: id,
+        },
+        function(data) {
+            users_table.ajax.reload();
+        }
+    );
+}
+
+function disableUser(id) {
+    RestRequest(
+        "disableUser", {
+            id: id,
+        },
+        function(data) {
+            users_table.ajax.reload();
+        }
+    );
 }
 
 function startScan() {
