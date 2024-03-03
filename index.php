@@ -178,12 +178,8 @@ include('php/html/menu.php');?>
                            <th><h5><b>Abgabe<b></h5></th>
                            <th><h5><b>Mahnungen<b></h5></th>
                         </tr>
-<<<<<<< HEAD
                      </tbody>
                      <tr>
-=======
-                     </thead>
->>>>>>> f3e607d05b5650ea80fddfeea158d1233584ea0e
                      <tbody>
                         <tr>
                            <td>
