@@ -1,5 +1,14 @@
 function openModal(id) {
-    $("#" + id).modal()
+    var myModal = new bootstrap.Modal(document.getElementById(id))
+    myModal.show()
+}
+
+function closeModal(id) {
+    document.querySelectorAll('.modal-backdrop').forEach(e => e.remove());
+    document.getElementsByTagName("body")[0].classList.remove("modal-open");
+    document.getElementsByTagName("body")[0].style.overflow = "";
+    document.getElementById(id).classList.remove("show");
+    document.getElementById(id).style.display = "none";
 }
 
 $('.modal').appendTo("body");

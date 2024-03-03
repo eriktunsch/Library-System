@@ -94,11 +94,11 @@ if (!$User->isAdmin()) {
                   </div>
                   <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon1">Autoren</span>
-                    <div class="tags-input form-control tag-bg-primary" data-splitchars="[;']" id="authors_i" data-id="authors" data-name="authors"></div>
+                    <div class="tags-input form-control tag-bg-primary" id="authors_i" data-id="authors" data-name="authors"></div>
                   </div>
                   <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon1">Genres</span>
-                    <div class="tags-input form-control tag-bg-primary" data-splitchars="[;']" id="genres_i" data-id="genres" data-name="genres"></div>
+                    <div class="tags-input form-control tag-bg-primary" id="genres_i" data-id="genres" data-name="genres"></div>
                   </div>
                   <div class="input-group mb-3">
                     <span class="input-group-text">Beschreibung</span>
@@ -107,9 +107,6 @@ if (!$User->isAdmin()) {
                   <input type="thumbnail" class="filepond" id="thumbnail" data-max-files="1" />
 
                   <button type="button" class="btn btn-soft-success mt-2 w-100" onclick="addBook()">Buch hinzufügen</button>
-                  <button type="button" class="btn btn-soft-primary d-none" data-bs-toggle="modal" id="openSelectBook" data-bs-target="#selectBook">
-                    Auswahl öffnen
-                  </button>
                 </div>
               </div>
             </div>
@@ -134,6 +131,9 @@ if (!$User->isAdmin()) {
 
   <?php echo $Modal->printModalHead("selectBook", "Bitte wähle das richtige Buch aus", "min-width: 70%"); ?>
   <div class="row" id="selectBookContent"></div>
+  <?php echo $Modal->printModalFooter(); ?>
+  <?php echo $Modal->printModalHead("changer", "Buch ändern", "min-width: 70%"); ?>
+  <div id="changer_content"></div>
   <?php echo $Modal->printModalFooter(); ?>
   <?php
   $genres = array();
@@ -181,7 +181,7 @@ if (!$User->isAdmin()) {
   $stmt = $db->query('SELECT publisher FROM books');
 
   while (($obj = $stmt->fetch_object()) != null) {
-    if (!in_array($obj->publisher, $authors)) {
+    if (!in_array($obj->publisher, $publishers)) {
       array_push($publishers, $obj->publisher);
 
       $publishers_ .= '{
@@ -197,8 +197,7 @@ if (!$User->isAdmin()) {
     var genres = [<?php echo $genres_; ?>];
     var publishers = [<?php echo $publishers_; ?>];
   </script>
-  <?php echo $LoadResource->insertJS("intern/admin.js");
-
+<?php echo $LoadResource->insertJS("intern/admin.js");
 }
 ?>
 
