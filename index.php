@@ -105,8 +105,6 @@ include('php/html/menu.php');?>
         </div>
     </div>
 </div>
-<hr>
-<hr> 
 
 <!-- nun kommt die Startseite bei Login -->
 
