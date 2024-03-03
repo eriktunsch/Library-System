@@ -144,7 +144,7 @@ if (!$User->isAdmin()) {
                 </div>
           </div>
         </div>
-        <div id="admin-user" class="tab-pane fade">
+        <div id="admin-users" class="tab-pane fade">
               <div class="card">
                 <div class="card-header">
                   <div class="header-title">
