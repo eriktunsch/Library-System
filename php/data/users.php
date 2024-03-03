@@ -42,7 +42,13 @@ if ($User->isAdmin()) {
                 }
             }
         ),
-        array('db' => 'username',  'dt' => 1),
+        array(
+            'db'        => 'username',
+            'dt'        => 1,
+            'formatter' => function ($d, $row) {
+                return '<a class="icon-link icon-link-hover" href="/profile/?u=' . $d . '">' . $d . '<svg class="bi" aria-hidden="true"><use xlink:href="#arrow-right"></use></svg></a>';
+            }
+        ),
         array('db' => 'name',  'dt' => 2),
         array('db' => 'mail',  'dt' => 3),
         array(
