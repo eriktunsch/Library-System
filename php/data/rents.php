@@ -88,7 +88,11 @@ if ($User->isAdmin()) {
             'formatter' => function ($d, $row) {
                 $date = new DateTime($d);
                 $date->modify('+14 day');
-                return $date->format('d.m.Y');
+                if (new DateTime() > $date) {
+                    return "<span class='text-danger'>" . $date->format('d.m.Y') . "</span>";
+                } else {
+                    return "<span>" . $date->format('d.m.Y') . "</span>";
+                }
             }
         ),
         array(
