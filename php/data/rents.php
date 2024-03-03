@@ -33,6 +33,17 @@ if ($User->isAdmin()) {
         $users[$result->id] = $result->name;
     }
 
+    $books = array();
+
+    $stmt = $db->query("SELECT isbn,title,subtitle FROM books");
+
+    while (($result = $stmt->fetch_object()) != null) {
+        if ($result->subtitle != "") {
+            $users[$result->isbn] = $result->title . "<br><i>" . $result->subtitle . "</i>";
+        } else {
+            $users[$result->isbn] = $result->title;
+        }
+    }
     // Array of database columns which should be read and sent back to DataTables. 
     // The `db` parameter represents the column name in the database.  
     // The `dt` parameter represents the DataTables column identifier. 
@@ -49,14 +60,11 @@ if ($User->isAdmin()) {
             }
         ),
         array(
-            'db'        => 'title',
+            'db'        => 'isbn',
             'dt'        => 1,
             'formatter' => function ($d, $row) {
-                if ($row["subtitle"] != "") {
-                    return $d . "<br><i>" . $row["subtitle"] . "</i>";
-                } else {
-                    return $d;
-                }
+                global $books;
+                return $books[$d];
             }
         ),
         array(
