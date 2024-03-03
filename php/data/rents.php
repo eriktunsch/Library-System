@@ -75,8 +75,17 @@ if ($User->isAdmin()) {
             }
         ),
         array(
-            'db'        => 'id',
+            'db'        => 'start',
             'dt'        => 4,
+            'formatter' => function ($d, $row) {
+                $date = new DateTime($d);
+                $date->modify('+14 day');
+                return $date->format('d.m.Y');
+            }
+        ),
+        array(
+            'db'        => 'id',
+            'dt'        => 5,
             'formatter' => function ($d, $row) {
                 if ($row["returned"] == NULL) {
                     return '<button class="btn btn-soft-warning btn-sm btn-rounded z-depth-0 mt-2 waves-effect" type="button" onclick="return(\'' . $d . '\');">zurückgegeben</button>';
