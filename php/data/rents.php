@@ -53,7 +53,7 @@ if ($User->isAdmin()) {
             'dt'        => 0,
             'formatter' => function ($d, $row) {
                 if ($d != NULL) {
-                    return '<i class="text-success fa-regular fa-circle-check"></i> ' . $d;
+                    return '<i class="text-success fa-regular fa-circle-check"></i> ' . date("d.m.Y, H:i", strtotime($d));
                 } else {
                     return '<i class="text-danger fa-regular fa-circle-xmark"></i>';
                 }
