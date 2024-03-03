@@ -97,9 +97,9 @@ var rents_table = $("#rents-table").DataTable({
             searchPanes: {
                 layout: 'columns-3',
                 panes: [{
-                    header: "Verfügbarkeit",
+                    header: "Zurückgegeben",
                     options: [{
-                            label: "Verfügbar",
+                            label: "Zurückgegeben",
                             value: function(rowData, rowIdx) {
                                 return (
                                     rowData[0].includes('<i class="text-success fa-regular fa-circle-check"></i>')
@@ -107,7 +107,7 @@ var rents_table = $("#rents-table").DataTable({
                             },
                         },
                         {
-                            label: "nicht Verfügbar",
+                            label: "noch nicht zurückgegeben",
                             value: function(rowData, rowIdx) {
                                 return (
                                     rowData[0].includes('<i class="text-danger fa-regular fa-circle-xmark"></i>')
@@ -116,7 +116,7 @@ var rents_table = $("#rents-table").DataTable({
                         },
                     ],
                     dtOpts: {
-                        searching: false,
+                        searching: true,
                         order: [
                             [0, "desc"]
                         ],
