@@ -36,7 +36,7 @@ class returnBook
                 isset($_data["id"]) && $_data["id"] != ""
             ) {
 
-                $stmt = $this->db->prepare("UPDATE rents SET returned=NULL WHERE id=?");
+                $stmt = $this->db->prepare("UPDATE rents SET returned=current_timestamp() WHERE id=?");
                 $stmt->bind_param("s", $_data["id"]);
                 $stmt->execute();
 
