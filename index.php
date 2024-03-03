@@ -23,8 +23,8 @@ include('php/html/menu.php'); ?>
                   </svg>
                </div>
                <div class="text-end">
-                  Bücher
-                  <h2 class="counter" style="visibility: visible;">x</h2>
+                 <h5> Bücher </h5>
+                  <h3 class="counter" style="visibility: visible;">x</h3>
                </div>
             </div>
          </div>
@@ -42,8 +42,8 @@ include('php/html/menu.php'); ?>
                   </svg>
                </div>
                <div class="text-end">
-                  Insgesamt ausgeliehen
-                  <h2 class="counter" style="visibility: visible;">x</h2>
+                 <h5> Insgesamt ausgeliehen </h5>
+                  <h3 class="counter" style="visibility: visible;">x</h3>
                </div>
             </div>
          </div>
@@ -62,8 +62,8 @@ include('php/html/menu.php'); ?>
                   </svg>
                </div>
                <div class="text-end">
-                  Seit Beginn ausgeliehen
-                  <h2 class="counter" style="visibility: visible;">x</h2>
+                  <h5> Seit Beginn ausgeliehen </h5>
+                  <h3 class="counter" style="visibility: visible;">x</h3>
                </div>
             </div>
          </div>
@@ -82,8 +82,8 @@ include('php/html/menu.php'); ?>
                   </svg>
                </div>
                <div class="text-end">
-                  Mitgliederzahl
-                  <h2 class="counter" style="visibility: visible;">x</h2>
+                  <h5> Mitgliederzahl </h5>
+                  <h3 class="counter" style="visibility: visible;">x</h3>
                </div>
             </div>
          </div>
@@ -115,13 +115,11 @@ include('php/html/menu.php'); ?>
             <h3>Öffnungszeiten & Kontakt </h3>
             <hr>
             <div class="text-center">
-               <h5 class="counter mb-2" style="visibility: visible; text-align: left"> Montags - Freitags: 09.30 -
-                  14.30 </h5>
+               <h6 class="counter mb-2" style="visibility: visible; text-align: left"> Montags - Freitags: 09.30 - 14.30 </h6>
                <hr>
-               <h5 class="counter mb-2" style="visibility: visible; text-align: left"> Verantwortliche: Frau
-                  Schmidt </h5>
+               <h6 class="counter mb-2" style="visibility: visible; text-align: left"> Verantwortliche: FrauSchmidt </h6>
                <hr>
-               <h5 class="counter mb-2" style="visibility: visible; text-align: left"> Kontakt: Email </h5>
+               <h6 class="counter mb-2" style="visibility: visible; text-align: left"> Kontakt: Email </h6>
             </div>
          </div>
       </div>
@@ -143,8 +141,8 @@ include('php/html/menu.php'); ?>
                   </svg>
                </div>
                <div class="text-end">
-                  ausgeliehene Bücher
-                  <h2 class="counter" style="visibility: visible;">x</h2>
+                  <h5> ausgeliehene Bücher </h5>
+                  <h3 class="counter" style="visibility: visible;">x</h3>
                </div>
             </div>
          </div>
@@ -163,8 +161,8 @@ include('php/html/menu.php'); ?>
                   </svg>
                </div>
                <div class="text-end">
-                  Merklistenanzahl
-                  <h2 class="counter" style="visibility: visible;">x</h2>
+                 <h5> Merklistenanzahl </h5>
+                  <h3 class="counter" style="visibility: visible;">x</h3>
                </div>
             </div>
          </div>
@@ -201,7 +199,7 @@ include('php/html/menu.php'); ?>
             <div class="card-body p-0">
                <div class="table-responsive mt-4">
                   <table id="basic-table" class="table table-striped mb-0" role="grid">
-                     <thead>
+                     <tbody>
                         <tr>
                            <th>
                               <h5><b>Bücher<b></h5>
