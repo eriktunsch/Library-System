@@ -284,7 +284,7 @@ include('php/html/menu.php'); ?>
    </div> -->
    <div class="col" style="flex: 30%;">
   <div class="card">
-    <div class="card-body p-6">
+    <div class="card-body p-6" style="display: flex; align-items: center;">
       <div class="bg-info text-white rounded p-1" style="margin-right: 10px;">
         <svg class="icon-32" width="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path fill-rule="evenodd" clip-rule="evenodd"
@@ -292,7 +292,7 @@ include('php/html/menu.php'); ?>
             fill="currentColor"></path>
         </svg>
       </div>
-      <h3 style="margin-bottom: 0;">Merkliste</h3>
+      <h3>Merkliste</h3>
     </div>
     <hr>
     <div class = "text-centre">
