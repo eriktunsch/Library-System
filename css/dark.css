@@ -1517,3 +1517,8 @@ hr {
 .dark .card-dark {
     background-color: #151824 !important;
 }
+
+.dark div.dt-container div.dt-length select {
+    background-color: #151824 !important;
+    border: var(--bs-border-width) solid rgba(255, 255, 255, 0.2);
+}
