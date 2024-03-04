@@ -6,7 +6,10 @@ if (!$Login->isLoggedin()) {
    echo "<meta http-equiv='refresh' content='0; URL=/login/index.php?ref=" . $actual_link . "'>";
    die;
 }
-include('php/html/menu.php'); ?>
+include('php/html/menu.php'); 
+$current_user = $User->getId(); ?>
+<script>var user = "<?php echo $current_user; ?>"</script>
+<?php if (!$Login->isLoggedin()) { ?>
 
 <!-- nun beginnt die Startseite ohne Login -->
 
@@ -24,7 +27,7 @@ include('php/html/menu.php'); ?>
                </div>
                <div class="text-end">
                   <h6> Bücher </h6>
-                  <h3 class="counter" style="visibility: visible;">x</h3>
+                  <h3 class="counter"><?php echo $db->query('SELECT isbn FROM books')->num_rows; ?>'</h3>
                </div>
             </div>
          </div>
@@ -42,8 +45,8 @@ include('php/html/menu.php'); ?>
                   </svg>
                </div>
                <div class="text-end">
-                  <h6> Insgesamt ausgeliehen </h6>
-                  <h3 class="counter" style="visibility: visible;">x</h3>
+                  <h6> aktuell ausgeliehen </h6>
+                  <h3 class="counter"><?php echo $db->query('SELECT id FROM rents WHERE returned IS NULL')->num_rows; ?></h3>
                </div>
             </div>
          </div>
@@ -62,7 +65,7 @@ include('php/html/menu.php'); ?>
                </div>
                <div class="text-end">
                   <h6> Seit Beginn ausgeliehen </h6>
-                  <h3 class="counter">x</h3>
+                  <h3 class="counter"><?php echo $db->query('SELECT isbn FROM books')->num_rows; ?></h3>
                </div>
             </div>
          </div>
@@ -81,7 +84,7 @@ include('php/html/menu.php'); ?>
                </div>
                <div class="text-end">
                   <h6> Mitgliederzahl </h6>
-                  <h3 class="counter">x</h3>
+                  <h3 class="counter"><?php echo $db->query('SELECT id FROM users')->num_rows; ?></h3>
                </div>
             </div>
          </div>
@@ -116,7 +119,7 @@ include('php/html/menu.php'); ?>
                <h6 class="counter mb-2" style="visibility: visible; text-align: left"> Montags - Freitags: 09.30 - 14.30
                </h6>
                <hr>
-               <h6 class="counter mb-2" style="visibility: visible; text-align: left"> Verantwortliche: FrauSchmidt
+               <h6 class="counter mb-2" style="visibility: visible; text-align: left"> Verantwortliche: Frau Schmidt
                </h6>
                <hr>
                <h6 class="counter mb-2" style="visibility: visible; text-align: left"> Kontakt: Email </h6>
@@ -126,7 +129,7 @@ include('php/html/menu.php'); ?>
    </div>
 </div>
 
-<!-- nun kommt die Startseite bei Login -->
+<?php } else { ?>
 
 <div class="row row-cols-4">
    <div class="col-lg-6 col-md-6">
@@ -142,7 +145,7 @@ include('php/html/menu.php'); ?>
                </div>
                <div class="text-end">
                   <h6> ausgeliehene Bücher </h6>
-                  <h3 class="counter" style="visibility: visible;">x</h3>
+                  <h3 class="counter"><?php echo $db->query('SELECT id FROM rents WHERE `user`="' . $User->getId() . '" returned IS NULL')->num_rows; ?></h3>
                </div>
             </div>
          </div>
@@ -160,8 +163,8 @@ include('php/html/menu.php'); ?>
                   </svg>
                </div>
                <div class="text-end">
-                  <h6> Merklistenanzahl </h6>
-                  <h3 class="counter">x</h3>
+                  <h6> Bücher auf Merkliste </h6>
+                  <h3 class="counter"><?php echo $db->query('SELECT id FROM bookmarks WHERE `user`="' . $User->getId() . '" ')->num_rows; ?></h3>
                </div>
             </div>
          </div>
@@ -182,81 +185,35 @@ include('php/html/menu.php'); ?>
                </svg>
             </div>
             <div class="header-title ml-3" style="flex: 1;">
-               <h4 class="card-title" style="text-align: left; margin-bottom: 0; padding-left: 20px;">Informationen zur
-                  Ausleihe</h4>
+               <h4 class="card-title" style="text-align: left; margin-bottom: 0; padding-left: 20px;">Deine Ausleihen</h4>
             </div>
          </div>
-
-
          <div class="card-body p-0">
-            <div class="table-responsive mt-4">
-               <table id="basic-table" class="table table-striped mb-0" role="grid">
-                  <tbody>
-                     <tr>
-                        <th>
-                           <h5><b>Bücher</b></h5>
-                        </th>
-                        <th>
-                           <h5><b>Abgabe</b></h5>
-                        </th>
-                        <th>
-                           <h5><b>Mahnungen</b></h5>
-                        </th>
-                     </tr>
-                     <tr>
-                        <td>
-                           <h6>Soft UI XD Version</h6>
-                        </td>
-                        <td style="color:#f16a1b">02.03.2024</td>
-                        <td>
-                           <div class="text-info">0.00€</div>
-                        </td>
-                     </tr>
-                     <tr>
-                        <td>
-                           <h6>Soft UI XD Version</h6>
-                        </td>
-                        <td style="color:#f16a1b">02.03.2024</td>
-                        <td>
-                           <div class="text-info">0.00€</div>
-                        </td>
-                     </tr>
-                     <tr>
-                        <td>
-                           <h6>Soft UI XD Version</h6>
-                        </td>
-                        <td style="color:#f16a1b">02.03.2024</td>
-                        <td>
-                           <div class="text-info">0.00€</div>
-                        </td>
-                     </tr>
-                  </tbody>
-               </table>
-            </div>
+         <?php echo $Table->printTableHead("rents-table", array("Zurückgegeben", "Buch", "Person", "Ausgeliehen", "Fälligkeit")); ?>
+        <?php echo $Table->printTableFooter(); ?>
          </div>
       </div>
    </div>
    <div class="col-md-4">
       <div class="card">
-         <div class="card">
-            <div class="card-body p-6" style="display: flex; align-items: center;">
-               <div class="bg-success text-white rounded p-3" style="margin-right: 20px;">
-                  <svg class="icon-32" width="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+         <div class="card-header d-flex justify-content-between align-items-center">
+            <div class="bg-secondary text-white rounded p-3">
+            <svg class="icon-32" width="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                      <path fill-rule="evenodd" clip-rule="evenodd"
                         d="M8.9 2H15.07C17.78 2 19.97 3.07 20 5.79V20.97C20 21.14 19.96 21.31 19.88 21.46C19.75 21.7 19.53 21.88 19.26 21.96C19 22.04 18.71 22 18.47 21.86L11.99 18.62L5.5 21.86C5.351 21.939 5.18 21.99 5.01 21.99C4.45 21.99 4 21.53 4 20.97V5.79C4 3.07 6.2 2 8.9 2ZM8.22 9.62H15.75C16.18 9.62 16.53 9.269 16.53 8.83C16.53 8.39 16.18 8.04 15.75 8.04H8.22C7.79 8.04 7.44 8.39 7.44 8.83C7.44 9.269 7.79 9.62 8.22 9.62Z"
                         fill="currentColor"></path>
                   </svg>
-               </div>
-               <h3 style="margin-bottom: 0;">Merkliste</h3>
             </div>
-            <hr>
-            <div class="text-centre">
-               <h5 class="counter mb-2" style="text-align: left; padding-left: 30px;"><b>Harry Potter</b></h5>
-               <hr>
-               <h5 class="counter mb-2" style="text-align: left; padding-left: 30px;"><b>Corpus Delicti</b></h5>
-               <hr>
-               <h5 class="counter mb-2" style="text-align: left; padding-left: 30px;"><b>Woyzeck</b></h5>
+            <div class="header-title ml-3" style="flex: 1;">
+               <h4 class="card-title" style="text-align: left; margin-bottom: 0; padding-left: 20px;">Deine Merkliste</h4>
             </div>
+         </div>
+
+
+         <div class="card-body p-0">
+         <?php echo $Table->printTableHead("marks-table", array("Verfügbarkeit", "Buch", "hinzugefügt", "")); ?>
+        <?php echo $Table->printTableFooter(); ?>
          </div>
       </div>
    </div>
@@ -266,6 +223,7 @@ include('php/html/menu.php'); ?>
 
 
 <?php
+}
 echo $LoadResource->insertJS("intern/home.js");
 ?>
 

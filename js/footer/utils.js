@@ -32,3 +32,22 @@ function randomstring(length) {
     }
     return result;
 }
+
+function abo() {
+    RestRequest(
+        "abo", {},
+        function(data) {
+            document.getElementById("newsletter_disable").style.display = "block";
+            document.getElementById("newsletter_enable").style.display = "none";
+        }
+    );
+}
+
+function deabo() {
+    RestRequest(
+        "deabo", {},
+        function(data) {
+            document.getElementById("newsletter_disable").style.display = "none";
+            document.getElementById("newsletter_enable").style.display = "block";
+        }
+    );}
