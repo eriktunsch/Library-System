@@ -65,7 +65,7 @@ if (!$Login->isLoggedin()) {
             }
         ),
         array(
-            'db'        => 'book',
+            'db'        => 'isbn',
             'dt'        => 1,
             'formatter' => function ($d, $row) {
                 global $books;
@@ -73,17 +73,31 @@ if (!$Login->isLoggedin()) {
             }
         ),
         array(
-            'db'        => 'added',
+            'db'        => 'user',
             'dt'        => 2,
+            'formatter' => function ($d, $row) {
+                global $users;
+                return $users[$d];
+            }
+        ),
+        array(
+            'db'        => 'start',
+            'dt'        => 3,
             'formatter' => function ($d, $row) {
                 return date("d.m.Y, H:i", strtotime($d));
             }
         ),
         array(
-            'db'        => 'user',
-            'dt'        => 3,
+            'db'        => 'start',
+            'dt'        => 4,
             'formatter' => function ($d, $row) {
-                return '<button class="btn btn-soft-danger btn-sm btn-rounded z-depth-0 waves-effect" type="button" onclick="removeMark(\'' . $d . '\', \'' . $row["book"] . '\');">von Merkliste entfernen</button>';
+                $date = new DateTime($d);
+                $date->modify('+14 day');
+                if (new DateTime() > $date) {
+                    return "<span class='text-danger'>" . $date->format('d.m.Y') . "</span>";
+                } else {
+                    return "<span>" . $date->format('d.m.Y') . "</span>";
+                }
             }
         )
     );

@@ -77,16 +77,10 @@ if (!$Login->isLoggedin()) {
             }
         ),
         array(
-            'db'        => 'start',
+            'db'        => 'user',
             'dt'        => 3,
             'formatter' => function ($d, $row) {
-                $date = new DateTime($d);
-                $date->modify('+14 day');
-                if (new DateTime() > $date) {
-                    return "<span class='text-danger'>" . $date->format('d.m.Y') . "</span>";
-                } else {
-                    return "<span>" . $date->format('d.m.Y') . "</span>";
-                }
+                return '<button class="btn btn-soft-danger btn-sm btn-rounded z-depth-0 waves-effect" type="button" onclick="removeMark(\'' . $d . '\', \'' . $row["book"] . '\');">von Merkliste entfernen</button>';
             }
         )
     );

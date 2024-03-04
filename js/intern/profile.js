@@ -97,7 +97,7 @@ var marks_table = $("#marks-table").DataTable({
     ]
 });
 
-function deleteBook(isbn) {
+function removeMark(user, book) {
     Swal.fire({
         title: "Bist du sicher?",
         text: "Diese Änderung kann nicht rückgängig gemacht werden!",
@@ -110,35 +110,12 @@ function deleteBook(isbn) {
     }).then((result) => {
         if (result.value) {
             RestRequest(
-                "deleteBook", {
-                    isbn: isbn,
+                "removeBookmark", {
+                    user: user,
+                    book: book
                 },
                 function(data) {
-                    books_table.ajax.reload();
-                }
-            );
-        }
-    });
-}
-
-function returnBook(id) {
-    Swal.fire({
-        title: "Bist du sicher?",
-        text: "Diese Änderung kann nicht rückgängig gemacht werden!",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Ja!",
-        cancelButtonText: "Nein!",
-    }).then((result) => {
-        if (result.value) {
-            RestRequest(
-                "returnBook", {
-                    id: id,
-                },
-                function(data) {
-                    rents_table.ajax.reload();
+                    marks_table.ajax.reload();
                 }
             );
         }
