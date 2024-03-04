@@ -4,19 +4,9 @@ use de\eriktunsch\library\utils\html\MessageContainer;
 
 $title = "Suche";
 include('../php/server.php');
-if (!$Login->isLoggedin()) {
-  $actual_link = "https://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}";
-  echo "<meta http-equiv='refresh' content='0; URL=/login/?ref=" . $actual_link . "'>";
-  die;
-}
 include('../php/html/menu.php'); ?>
 
   <div class="card">
-    <div class="card-header">
-      <div class="header-title">
-        <h4 class="card-title">vorhandene Bücher</h4>
-      </div>
-    </div>
     <div class="card-body">
       <?php echo $Table->printTableHead("books-table", array("Verfügbarkeit", "Titel", "Genres", "Autoren", "Verlag", "")); ?>
       <?php echo $Table->printTableFooter(); ?>

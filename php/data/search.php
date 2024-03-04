@@ -94,9 +94,11 @@ $columns = array(
         'db'        => 'isbn',
         'dt'        => 5,
         'formatter' => function ($d, $row) {
-            global $Login, $marks;
+            global $Login, $marks, $User;
             if ($Login->isLoggedin() && !in_array($d, $marks)) {
                 return '<button class="btn btn-soft-success btn-sm btn-rounded z-depth-0 waves-effect" type="button" onclick="setMark(\'' . $d . '\');">zur Merkliste</button>';
+            } elseif ($Login->isLoggedin()) {
+                return '<button class="btn btn-soft-danger btn-sm btn-rounded z-depth-0 waves-effect" type="button" onclick="removeMark(\'' . $User->getId() . '\', \'' . $d . '\');">von Merkliste entfernen</button>';
             } else {
                 return '';
             }
