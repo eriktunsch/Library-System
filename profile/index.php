@@ -19,7 +19,7 @@ if (isset($_GET["u"]) && $User->isAdmin()) {
 } ?>
 <script>var user = "<?php echo $current_user; ?>"</script>
 <div class="row">
-  <div class="col-lg-8">
+  <div class="col-lg-12">
     <div class="card">
       <div class="card-header">
         <div class="header-title">
@@ -32,11 +32,11 @@ if (isset($_GET["u"]) && $User->isAdmin()) {
       </div>
     </div>
   </div>
-  <div class="col-lg-4">
+  <div class="col-lg-12">
     <div class="card">
       <div class="card-header">
         <div class="header-title">
-          <h4 class="card-title">Markliste</h4>
+          <h4 class="card-title">Merkliste</h4>
         </div>
       </div>
       <div class="card-body">

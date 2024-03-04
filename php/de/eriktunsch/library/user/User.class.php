@@ -23,6 +23,8 @@ class User
         if ($username == "") {
             $username = $_SESSION["username"];
             $this->username = $username;
+        } else {
+            $this->username = $username;
         }
         
         $stmt = $db->prepare("SELECT * FROM users WHERE username=? LIMIT 1");
