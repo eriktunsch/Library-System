@@ -12,12 +12,12 @@ if (!$Login->isLoggedin()) {
 }
 include('../php/html/menu.php');
 
-$current_user = $User;
+$current_user = $User->getId();
 
 if (isset($_GET["u"]) && $User->isAdmin()) {
-  $current_user = new User($_GET["u"]);
+  $current_user = (new User($_GET["u"]))->getId();
 } ?>
-<script>var user = "<?php echo $current_user->getId(); ?>"</script>
+<script>var user = "<?php echo $current_user; ?>"</script>
 <div class="row">
   <div class="col-lg-8">
     <div class="card">
