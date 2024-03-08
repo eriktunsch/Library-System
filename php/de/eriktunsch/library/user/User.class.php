@@ -26,7 +26,7 @@ class User
         } else {
             $this->username = $username;
         }
-        
+
         $stmt = $db->prepare("SELECT * FROM users WHERE username=? LIMIT 1");
         $stmt->bind_param("s", $this->username);
         $stmt->execute();
@@ -41,8 +41,16 @@ class User
 
             $this->name = $obj->name;
             $this->mail = $obj->mail;
-            $this->newsletter = $obj->newsletter;
-            $this->disabled = $obj->disabled;
+            if ($obj->newsletter == 1) {
+                $this->newsletter = true;
+            } else {
+                $this->newsletter = false;
+            }
+            if ($obj->disabled == 1 || $obj->disabled == 2) {
+                $this->disabled = true;
+            } else {
+                $this->disabled = false;
+            }
             $this->id = $obj->id;
         }
     }
@@ -83,7 +91,8 @@ class User
         return $_SESSION["isAdmin"];
     }
 
-    public function isError() {
+    public function isError()
+    {
         return $this->error;
     }
 }

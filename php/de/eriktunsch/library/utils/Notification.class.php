@@ -8,21 +8,35 @@ use de\eriktunsch\library\utils\Variable;
 
 class Notification
 {
-    public function sendEmail($email, $username, $subject, $title, $message, $verifier = false)
+    public function sendNewsletter($email, $subject, $message)
     {
 
         $Variable = new Variable();
-        $db = (new MysqlConnector())->getConnection($Variable->getGlobalVar("dbhost"), $Variable->getGlobalVar("dbuser"), $Variable->getGlobalVar("dbpass"), $Variable->getGlobalVar("dbdb"));    
+        $db = new mysqli($Variable->getGlobalVar("dbhost"), $Variable->getGlobalVar("dbuser"), $Variable->getGlobalVar("dbpass"), $Variable->getGlobalVar("dbdb"));
         $Settings = new Settings();
 
-        $body = str_replace("{{message}}", $message, str_replace("{{title}}", $title, file_get_contents('https://' . $Settings->getSettings('url') . '/php/html/email.html')));
+        $body = str_replace("{{message}}", $message, file_get_contents('https://' . $Settings->getSettings('url') . '/php/html/newsletter.html'));
 
-        if ($verifier) {
-            $stmt = $db->prepare('INSERT INTO emails (email, username, subject, body, verifier) VALUES (?, ?, ?, ?, "1")');
-        } else {
-            $stmt = $db->prepare('INSERT INTO emails (email, username, subject, body) VALUES (?, ?, ?, ?)');
-        }
-        $stmt->bind_param("ssss", $email, $username, $subject, $body);
+        $stmt = $db->prepare('INSERT INTO emails (email, subject, body) VALUES (?, ?, ?)');
+
+        $email_json = json_encode($email);
+        $stmt->bind_param("sss", $email_json, $subject, $body);
+        $stmt->execute();
+    }
+
+    public function sendEmail($email, $subject, $message)
+    {
+
+        $Variable = new Variable();
+        $db = new mysqli($Variable->getGlobalVar("dbhost"), $Variable->getGlobalVar("dbuser"), $Variable->getGlobalVar("dbpass"), $Variable->getGlobalVar("dbdb"));
+        $Settings = new Settings();
+
+        $body = str_replace("{{subject}}", $subject, str_replace("{{message}}", $message, file_get_contents('https://' . $Settings->getSettings('url') . '/php/html/email.html')));
+
+        $stmt = $db->prepare('INSERT INTO emails (email, subject, body) VALUES (?, ?, ?)');
+
+        $email_json = json_encode($email);
+        $stmt->bind_param("sss", $email_json, $subject, $body);
         $stmt->execute();
     }
 }

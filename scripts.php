@@ -1,5 +1,5 @@
 <?php
-header("Cache-Control: max-age=0");
+header("Cache-Control: max-age=604800");
 header('Content-type: text/javascript');
 include('php/lib/JShrink/Minifier.php');
 if (file_exists("php/cache/minifier/js/" . str_replace("/", "_", str_replace("..", "", base64_decode($_GET["script"]))))) {

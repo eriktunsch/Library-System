@@ -22,7 +22,8 @@ class Email
         // Create a message
         $messageM = (new Swift_Message($subject))
             ->setFrom([$Settings->getSettings("smtp_from_mail") => $replyName])
-            ->setTo([$email])
+            ->setTo([$Settings->getSettings("smtp_from_mail")])
+            ->setBcc($email)
             ->setReplyTo($replyAddress, $replyName)
             ->setBody($message)
             ->setContentType("text/html");

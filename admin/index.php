@@ -79,7 +79,7 @@ if (!$User->isAdmin()) {
                   <div class="row">
                     <div class="col">
                       <div class="form-floating custom-form-floating form-group mb-3">
-                        <input type="text" class="form-control" id="publisher" placeholder="Verlag">
+                        <input type="text" class="form-control" id="publisher" placeholder="Verlag" data-prefetch="/php/data/publishers.php">
                         <label for="publisher">Verlag</label>
                       </div>
                     </div>

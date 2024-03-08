@@ -26,6 +26,7 @@
     <?php echo $LoadResource->insertJS("footer/base64.js"); ?>
     <?php echo $LoadResource->insertJS("footer/utils.js"); ?>
     <?php echo $LoadResource->insertJS("external/datatables.js", true); ?>
+    <?php echo $LoadResource->insertJS("external/autocomplete.js"); ?>
 
     <?php echo $LoadResource->insertCSS("core/libs.css", true); ?>
     <?php echo $LoadResource->insertCSS("external/aos.css", true); ?>
@@ -55,16 +56,16 @@
 
     <aside class="sidebar sidebar-default sidebar-white sidebar-base navs-rounded-all ">
         <div class="sidebar-header d-flex align-items-center justify-content-start">
-            <a href="/" class="navbar-brand">
+            <a href="/" class="navbar-brand" style="margin: 0 auto;">
                 <!--Logo start-->
                 <!--logo End-->
                 <!--Logo start-->
                 <div class="logo-main">
                     <div class="logo-normal">
-                        <img class="icon-50" style="width:auto" src="/images/logo/logo.png" />
+                        <img class="icon-50" style="width:auto; height: 5rem;" src="/images/logo/logo.png" />
                     </div>
                     <div class="logo-mini">
-                        <img class="icon-50" style="width:auto" src="/images/logo/logo.png" />
+                        <img class="icon-50" style="width:auto; height: 5rem" src="/images/logo/logo.png" />
                     </div>
                 </div>
                 <!--logo End-->
@@ -95,7 +96,7 @@
                                     <path fill-rule="evenodd" clip-rule="evenodd" d="M20.1907 6.34909C20.8007 6.34909 21.2007 6.55909 21.6007 7.01909C22.0007 7.47909 22.0707 8.13909 21.9807 8.73809L21.0307 15.2981C20.8507 16.5591 19.7707 17.4881 18.5007 17.4881H7.59074C6.26074 17.4881 5.16074 16.4681 5.05074 15.1491L4.13074 4.24809L2.62074 3.98809C2.22074 3.91809 1.94074 3.52809 2.01074 3.12809C2.08074 2.71809 2.47074 2.44809 2.88074 2.50809L5.26574 2.86809C5.60574 2.92909 5.85574 3.20809 5.88574 3.54809L6.07574 5.78809C6.10574 6.10909 6.36574 6.34909 6.68574 6.34909H20.1907ZM14.1307 11.5481H16.9007C17.3207 11.5481 17.6507 11.2081 17.6507 10.7981C17.6507 10.3781 17.3207 10.0481 16.9007 10.0481H14.1307C13.7107 10.0481 13.3807 10.3781 13.3807 10.7981C13.3807 11.2081 13.7107 11.5481 14.1307 11.5481Z" fill="currentColor"></path>
                                 </svg>
                             </i>
-                            <span class="item-name"><?php if ($Login->isLoggedin()) { ?> Ausleih / Rückgabe <?php } else { ?>Rückgabe<?php } ?></span>
+                            <span class="item-name">Ausleih / Rückgabe</span>
                         </a>
                     </li>
 
@@ -163,6 +164,7 @@
                             </svg>
                         </i>
                     </div>
+                    <?php if ($Login->isLoggedin()) { ?>
                     <ul class="mb-2 navbar-nav ms-auto align-items-center navbar-list mb-lg-0">
                         <li class="nav-item dropdown">
                             <a class="py-0 nav-link d-flex align-items-center" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -177,6 +179,9 @@
                             </ul>
                         </li>
                     </ul>
+                    <?php } else { ?>
+                        <button type="button" class="mb-2 navbar-nav ms-auto align-items-center navbar-list mb-lg-0 btn btn-success" onclick="window.location.replace('/login');">Login</button>
+                   <?php } ?>
                 </div>
             </nav>
             <!-- Nav Header Component Start -->
@@ -188,24 +193,25 @@
                                 <div>
                                     <h1><?php echo $title; ?></h1>
                                 </div>
+                                <?php if ($Login->isLoggedin()) { ?>
                                 <div>
                                     <?php
                                     if ($User->isNewsletter()) {
                                         $enable = "display: none";
-                                        $diable = "display: block";
+                                        $disable = "display: block";
                                     } else {
                                         $enable = "display: block";
-                                        $diable = "display: none";
+                                        $disable = "display: none";
                                     }
                                     ?>
-                                    <a href="javascript:abo();" class="btn btn-link btn-soft-info" id="newsletter_enable" style="<?php echo $enable; ?>">
+                                    <a href="javascript:abo();" class="btn btn-info" id="newsletter_enable" style="<?php echo $enable; ?>">
                                         <svg class="icon-20" width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M15.3716 6.45056C15.3212 5.96422 15.2687 5.45963 15.1396 4.95611C14.7879 3.75153 13.8136 3.00001 12.7691 3.00001C12.1864 2.99786 11.4494 3.35644 11.0316 3.71932L7.56822 6.61697H5.75517C4.42084 6.61697 3.34792 7.6444 3.1453 9.12705C2.97313 10.5506 2.93114 13.2379 3.1453 14.8042C3.33112 16.3706 4.35575 17.383 5.75517 17.383H7.56822L11.0988 20.3236C11.461 20.6382 12.1003 20.9989 12.6882 20.9989C12.726 21 12.7596 21 12.7932 21C13.8577 21 14.7952 20.2206 15.1469 19.0192C15.2802 18.5082 15.3264 18.0293 15.3716 17.5666L15.4188 17.1082C15.5994 15.6213 15.5994 8.36908 15.4188 6.89288L15.3716 6.45056Z" fill="currentColor"></path>
                                             <path opacity="0.4" d="M19.4263 6.49467C19.1397 6.0706 18.5665 5.96538 18.1476 6.25848C17.7319 6.55479 17.629 7.14097 17.9177 7.56612C18.7208 8.74923 19.1628 10.3231 19.1628 12.0001C19.1628 13.676 18.7208 15.251 17.9177 16.4341C17.629 16.8592 17.7319 17.4454 18.1476 17.7417C18.302 17.8512 18.4836 17.9092 18.6715 17.9092C18.9728 17.9092 19.2542 17.7578 19.4263 17.5055C20.4405 16.0121 21 14.0571 21 12.0001C21 9.94307 20.4405 7.98805 19.4263 6.49467Z" fill="currentColor"></path>
                                         </svg>
                                         Newsletter abonnieren
                                     </a>
-                                    <a href="javascript:deabo();" class="btn btn-link btn-soft-danger" id="newsletter_disable" style="<?php echo $disable; ?>">
+                                    <a href="javascript:deabo();" class="btn btn-danger" id="newsletter_disable" style="<?php echo $disable; ?>">
                                         <svg class="icon-20" width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M15.3716 6.45056C15.3212 5.96422 15.2687 5.45963 15.1396 4.95611C14.7879 3.75153 13.8136 3.00001 12.7691 3.00001C12.1864 2.99786 11.4494 3.35644 11.0316 3.71932L7.56822 6.61697H5.75517C4.42084 6.61697 3.34792 7.6444 3.1453 9.12705C2.97313 10.5506 2.93114 13.2379 3.1453 14.8042C3.33112 16.3706 4.35575 17.383 5.75517 17.383H7.56822L11.0988 20.3236C11.461 20.6382 12.1003 20.9989 12.6882 20.9989C12.726 21 12.7596 21 12.7932 21C13.8577 21 14.7952 20.2206 15.1469 19.0192C15.2802 18.5082 15.3264 18.0293 15.3716 17.5666L15.4188 17.1082C15.5994 15.6213 15.5994 8.36908 15.4188 6.89288L15.3716 6.45056Z" fill="currentColor"></path>
                                             <path opacity="0.4" d="M19.4263 6.49467C19.1397 6.0706 18.5665 5.96538 18.1476 6.25848C17.7319 6.55479 17.629 7.14097 17.9177 7.56612C18.7208 8.74923 19.1628 10.3231 19.1628 12.0001C19.1628 13.676 18.7208 15.251 17.9177 16.4341C17.629 16.8592 17.7319 17.4454 18.1476 17.7417C18.302 17.8512 18.4836 17.9092 18.6715 17.9092C18.9728 17.9092 19.2542 17.7578 19.4263 17.5055C20.4405 16.0121 21 14.0571 21 12.0001C21 9.94307 20.4405 7.98805 19.4263 6.49467Z" fill="currentColor"></path>
@@ -213,6 +219,7 @@
                                         Newsletter deabonnieren
                                     </a>
                                 </div>
+                                <?php } ?>
                             </div>
                         </div>
                     </div>
