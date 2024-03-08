@@ -13,10 +13,6 @@ function closeModal(id) {
 
 $('.modal').appendTo("body");
 
-$(function() {
-    $('.selectpicker').selectpicker();
-});
-
 var element = document.getElementsByClassName('btn');
 var i;
 for (i = 0; i < element.length; i++) {

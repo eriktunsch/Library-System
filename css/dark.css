@@ -1522,3 +1522,8 @@ hr {
     background-color: #151824 !important;
     border: var(--bs-border-width) solid rgba(255, 255, 255, 0.2);
 }
+
+.dark div.dtsp-searchPane div.dt-container div.dt-scroll-body, .dark div.dtsp-searchPane div.dt-container div.dataTables_scrollBody, .dark div.dtsp-searchPane div.dataTables_wrapper div.dt-scroll-body, .dark div.dtsp-searchPane div.dataTables_wrapper div.dataTables_scrollBody {
+    background-color: #151824 !important;
+    border: var(--bs-border-width) solid rgba(255, 255, 255, 0.2);
+}
