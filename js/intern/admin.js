@@ -209,7 +209,7 @@ function loadChanger(isbn) {
         JSON.parse(b64DecodeUnicode(response.data.authors))
       );
       tagElements["genres_i_change"].addTags(
-        JSON.parse(b64DecodeUnicode(response.data.authors))
+        JSON.parse(b64DecodeUnicode(response.data.genres))
       );
 
       publishDate = $("#publish_change").flatpickr({
