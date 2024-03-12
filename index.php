@@ -88,7 +88,7 @@ $current_user = $User->getId(); ?>
             <h5 class="card-title">Neue Bücher</h5>
                <div class="row row-cols-3">
                   <?php 
-                  $stmt = $db->query('SELECT * FROM books ORDER by added_date LIMIT 9');
+                  $stmt = $db->query('SELECT * FROM books ORDER by added_date DESC LIMIT 9');
 
                   while (($obj = $stmt->fetch_object()) != null) { 
                      $thumbnail_stmt = $db->prepare('SELECT * FROM thumbnails WHERE isbn=?');
